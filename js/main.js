@@ -9,34 +9,83 @@ function updateHeaderOnScroll() {
 window.addEventListener("scroll", updateHeaderOnScroll, { passive: true });
 updateHeaderOnScroll();
 
-const GAME_PAGE = "game.html";
-const gameCardIds = ["foodGame", "rouletteGame", "tournamentGame"];
+const INDEX_PAGE = "index.html";
+const title = document.getElementById("title");
 
-function goToGamePage() {
-  window.location.href = GAME_PAGE;
+if (title) {
+  title.addEventListener("click", () => {
+    window.location.href = INDEX_PAGE;
+  });
 }
 
-gameCardIds.forEach((id) => {
+const GAME_PAGE = "game.html";
+
+const gameCardLinks = {
+  foodGame: "guess",
+  rouletteGame: "roulette",
+  tournamentGame: "tournament",
+};
+
+function goToGamePage(gameKey) {
+  const url = new URL(GAME_PAGE, window.location.href);
+  if (gameKey) {
+    url.searchParams.set("game", gameKey);
+  }
+  window.location.href = url.pathname + url.search;
+}
+
+Object.entries(gameCardLinks).forEach(([id, gameKey]) => {
   const card = document.getElementById(id);
   if (!card) return;
-  card.addEventListener("click", goToGamePage);
+  card.addEventListener("click", () => goToGamePage(gameKey));
 });
 
+const TEAM_PAGE = "team.html";
+const isGamePage = Boolean(document.getElementById("tournament-game"));
 const nav = document.getElementById("nav");
-if (nav) {
-  Array.from(nav.children)
-    .slice(0, 3)
-    .forEach((item) => {
-      item.addEventListener("click", goToGamePage);
+
+if (nav && !isGamePage) {
+  const navGameKeys = ["roulette", "tournament", "guess"];
+  const navItems = Array.from(nav.children);
+
+  navItems.slice(0, 3).forEach((item, index) => {
+    item.addEventListener("click", () => goToGamePage(navGameKeys[index]));
+  });
+
+  if (navItems[3]) {
+    navItems[3].addEventListener("click", () => {
+      window.location.href = TEAM_PAGE;
     });
+  }
 }
 
 const FORM_PAGE = "form.html";
 
-function goToFormPage() {
-  window.location.href = FORM_PAGE;
+function goToFormPage(menuKey, source) {
+  const url = new URL(FORM_PAGE, window.location.href);
+
+  if (menuKey) {
+    url.searchParams.set("menu", menuKey);
+  }
+
+  if (source) {
+    url.searchParams.set("source", source);
+  }
+
+  window.location.href = url.pathname + url.search;
 }
 
 document.querySelectorAll("#menuList [id$='Menu']").forEach((menu) => {
-  menu.addEventListener("click", goToFormPage);
+  menu.addEventListener("click", () => {
+    goToFormPage(menu.dataset.menu, "recommend");
+  });
 });
+
+const FORTUNE_COOKIE_PAGE = "fortuneCookie.html";
+const fortuneCookieBanner = document.getElementById("fortuneCookie");
+
+if (fortuneCookieBanner) {
+  fortuneCookieBanner.addEventListener("click", () => {
+    window.location.href = FORTUNE_COOKIE_PAGE;
+  });
+}
