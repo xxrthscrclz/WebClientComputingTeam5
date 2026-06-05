@@ -8,15 +8,17 @@ const fortunes = [
 ];
 
 const menus = [
-  { name: "김치볶음밥", emoji: "🍚" },
-  { name: "김치찌개", emoji: "🍲" },
-  { name: "닭볶음탕", emoji: "🍗" },
-  { name: "된장찌개", emoji: "🥘" },
-  { name: "떡볶이", emoji: "🌶️" },
-  { name: "미역국", emoji: "🥣" },
-  { name: "샤브샤브", emoji: "🫕" },
-  { name: "알리오올리오 파스타", emoji: "🍝" },
+  { key: "kimchiFriedRice", name: "김치볶음밥", emoji: "🍚" },
+  { key: "kimchiStew", name: "김치찌개", emoji: "🍲" },
+  { key: "dakbokkeumtang", name: "닭볶음탕", emoji: "🍗" },
+  { key: "doenjangStew", name: "된장찌개", emoji: "🥘" },
+  { key: "tteokbokki", name: "떡볶이", emoji: "🌶️" },
+  { key: "seaweedSoup", name: "미역국", emoji: "🥣" },
+  { key: "shabuShabu", name: "샤브샤브", emoji: "🫕" },
+  { key: "aglioOlio", name: "알리오올리오 파스타", emoji: "🍝" },
 ];
+
+let selectedMenu = null;
 
 const drawCookieBtn = document.getElementById("drawCookieBtn");
 const fortuneModal = document.getElementById("fortuneModal");
@@ -32,13 +34,20 @@ function pickRandomItem(list) {
 }
 
 function openFortuneModal() {
-  if (!fortuneModal) return;
+  if (
+    !fortuneModal ||
+    !modalFortuneText ||
+    !modalMenuEmoji ||
+    !modalMenuText
+  ) {
+    return;
+  }
 
-  const menu = pickRandomItem(menus);
+  selectedMenu = pickRandomItem(menus);
 
   modalFortuneText.textContent = pickRandomItem(fortunes);
-  modalMenuEmoji.textContent = menu.emoji;
-  modalMenuText.textContent = menu.name;
+  modalMenuEmoji.textContent = selectedMenu.emoji;
+  modalMenuText.textContent = selectedMenu.name;
   fortuneModal.classList.add("show");
 }
 
@@ -57,7 +66,14 @@ if (modalCloseBtn) {
 
 if (recipeSelectBtn) {
   recipeSelectBtn.addEventListener("click", () => {
-    window.location.href = "recipe.html";
+    if (!selectedMenu) return;
+
+    const params = new URLSearchParams({
+      menu: selectedMenu.key,
+      source: "fortune",
+    });
+
+    window.location.href = `form.html?${params.toString()}`;
   });
 }
 

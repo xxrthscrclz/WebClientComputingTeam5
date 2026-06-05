@@ -1,12 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>음식 옵션 입력</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <script src="js/form.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메뉴 취향 선택</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/form.css" />
+  </head>
+  <body>
+    <header>
+      <div id="header">
+        <div id="title">오늘 뭐 먹지?</div>
+        <div id="nav">
+          <div>룰렛 게임</div>
+          <div>토너먼트 게임</div>
+          <div>음식 맞추기 게임</div>
+          <div>팀 소개</div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div id="formPage" class="app">
+        <section class="form-panel" aria-labelledby="page-title">
+          <div class="title-group">
+            <p class="eyebrow">Recipe Option Form</p>
+            <h1 id="page-title">단계 고르기</h1>
+            <p class="summary">
+              자유롭게 메뉴의 맵기, 염도와 같은 세부 옵션을 골라보세요!
+            </p>
+          </div>
+
+          <div class="selected-menu" aria-live="polite">
+            <span>추천 메뉴</span>
+            <strong id="selectedMenuName">메뉴를 불러오는 중</strong>
+            <small id="gameSource">게임 선택 정보 없음</small>
+          </div>
+
+          <form id="foodForm" novalidate>
+            <fieldset id="fallbackFieldset">
+              <legend>추천 메뉴 확인</legend>
+
+              <label for="menuChoice">메뉴 선택</label>
+              <select id="menuChoice" name="menuChoice" required>
+                <option value="">선택하세요</option>
+                <option value="tteokbokki">떡볶이</option>
+                <option value="kimchiFriedRice">김치볶음밥</option>
+                <option value="dakbokkeumtang">닭볶음탕</option>
+                <option value="shabuShabu">샤브샤브</option>
+                <option value="doenjangStew">된장찌개</option>
+                <option value="kimchiStew">김치찌개</option>
+                <option value="seaweedSoup">미역국</option>
+                <option value="aglioOlio">알리오올리오</option>
+              </select>
+            </fieldset>
+
+            <fieldset id="customFieldset" class="custom-fieldset" hidden>
+              <legend>메뉴별 세부 선택</legend>
+              <div id="customFields" class="custom-fields"></div>
+            </fieldset>
+
+            <p id="formMessage" class="message" aria-live="polite"></p>
+
+            <div class="actions">
+              <button type="submit">레시피 보러가기</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/form.js"></script>
+  </body>
 </html>
