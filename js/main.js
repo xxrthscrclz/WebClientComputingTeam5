@@ -9,6 +9,15 @@ function updateHeaderOnScroll() {
 window.addEventListener("scroll", updateHeaderOnScroll, { passive: true });
 updateHeaderOnScroll();
 
+const INDEX_PAGE = "index.html";
+const title = document.getElementById("title");
+
+if (title) {
+  title.addEventListener("click", () => {
+    window.location.href = INDEX_PAGE;
+  });
+}
+
 const GAME_PAGE = "game.html";
 const gameCardIds = ["foodGame", "rouletteGame", "tournamentGame"];
 
@@ -40,3 +49,12 @@ function goToFormPage() {
 document.querySelectorAll("#menuList [id$='Menu']").forEach((menu) => {
   menu.addEventListener("click", goToFormPage);
 });
+
+const FORTUNE_COOKIE_PAGE = "fortuneCookie.html";
+const fortuneCookieBanner = document.getElementById("fortuneCookie");
+
+if (fortuneCookieBanner) {
+  fortuneCookieBanner.addEventListener("click", () => {
+    window.location.href = FORTUNE_COOKIE_PAGE;
+  });
+}

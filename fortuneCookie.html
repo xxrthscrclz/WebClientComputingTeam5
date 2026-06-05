@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>포춘 쿠키</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="header">
+        <div id="title">오늘 뭐 먹지?</div>
+        <div id="nav">
+          <div>룰렛 게임</div>
+          <div>토너먼트 게임</div>
+          <div>음식 맞추기 게임</div>
+          <div>팀 소개</div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="fortuneCookiePage">
+        <div id="fortuneCookieHeroPicture"></div>
+        <div id="fortuneCookieHeroContent">
+          <p id="fortuneCookieHeroLabel">✨ 오늘의 운세</p>
+          <h1 id="fortuneCookieHeroTitle">🥠 포춘 쿠키 뽑기</h1>
+          <p id="fortuneCookieHeroDesc">
+            🍀 쿠키를 열고 오늘의 메시지와 메뉴를 확인해 보세요
+          </p>
+          <button type="button" id="drawCookieBtn">포춘 쿠키 뽑기</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="fortuneModal" class="modal-overlay">
+      <div id="fortuneModalBox" class="modal-box">
+        <h3 id="modalTitle">오늘의 운세</h3>
+        <p id="modalFortuneText"></p>
+        <div id="modalMenuRecommend">
+          <span id="modalMenuBadge">메뉴 추천</span>
+          <div id="modalMenuCard">
+            <span id="modalMenuEmoji" aria-hidden="true"></span>
+            <p id="modalMenuText"></p>
+          </div>
+        </div>
+        <div id="modalActions">
+          <button type="button" id="recipeSelectBtn">레시피 추천받기</button>
+          <button type="button" id="modalCloseBtn">닫기</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/fortuneCookie.js"></script>
+  </body>
+</html>
