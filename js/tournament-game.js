@@ -15,14 +15,13 @@ const leftImg = document.getElementById("left-img");
 const rightImg = document.getElementById("right-img");
 const leftName = document.getElementById("left-name");
 const rightName = document.getElementById("right-name");
-const roundInfo = document.getElementById("round-info");
+const roundNameEl = document.getElementById("round-name");
+const roundMatchCurrentEl = document.getElementById("round-match-current");
+const roundMatchTotalEl = document.getElementById("round-match-total");
 const winnerModal = document.getElementById("winner-modal");
 const winnerImg = document.getElementById("winner-img");
 const winnerName = document.getElementById("winner-name");
 const shortcutLink = document.getElementById("shortcut-link");
-
-//
-const gameHeader = document.getElementById("tournament-title");
 
 let currentRound = [];
 let nextRound = [];
@@ -49,14 +48,22 @@ function setFoodCard(imgEl, nameEl, food) {
   nameEl.textContent = food.name;
 }
 
-// 8강, 4
+// 8강 → 4강 → 결승전
 function getRoundName(count) {
   if (count === 2) return "결승전";
   return `${count}강`;
 }
 
 function updateRoundInfo() {
-  roundInfo.textContent = `${matchIndex + 1}/${totalMatches}`;
+  if (roundNameEl) {
+    roundNameEl.textContent = getRoundName(currentRound.length);
+  }
+  if (roundMatchCurrentEl) {
+    roundMatchCurrentEl.textContent = String(matchIndex + 1);
+  }
+  if (roundMatchTotalEl) {
+    roundMatchTotalEl.textContent = String(totalMatches);
+  }
 }
 
 function showCurrentMatch() {

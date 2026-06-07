@@ -7,10 +7,25 @@
   color: var(--black-text-color);
 }
 
-.round-info {
-  font-size: 18px;
-  font-weight: 600;
+.round-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.round-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--main-color);
+}
+
+.round-match-label {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #7a6a5a;
 }
 
 .match-container {

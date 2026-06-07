@@ -403,8 +403,37 @@ function renderOptionTags() {
   }
 }
 
+function getFormPageUrl() {
+  var resolvedMenuKey = menuKey;
+
+  if (!resolvedMenuKey) {
+    resolvedMenuKey = Object.keys(menuKeyToFoodKey).find(function (mk) {
+      return menuKeyToFoodKey[mk] === foodKey;
+    });
+  }
+
+  if (!resolvedMenuKey) {
+    return "form.html";
+  }
+
+  var formParams = new URLSearchParams();
+  formParams.set("menu", resolvedMenuKey);
+
+  var source = params.get("source");
+  if (source) {
+    formParams.set("source", source);
+  }
+
+  return "form.html?" + formParams.toString();
+}
+
 function renderPage() {
   document.title = "오늘 뭐 먹지? - " + food.name;
+
+  var formLink = document.getElementById("breadcrumb-form-link");
+  if (formLink) {
+    formLink.href = getFormPageUrl();
+  }
 
   document.getElementById("breadcrumb-name").textContent = food.name;
   document.getElementById("recipe-title").textContent = food.name;

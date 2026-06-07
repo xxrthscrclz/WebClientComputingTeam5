@@ -56,7 +56,14 @@
       <section id="tournament-game" class="game-panel">
         <div class="game-content">
           <h2 class="title" id="tournament-title">음식 토너먼트</h2>
-          <p class="round-info" id="round-info">1/4</p>
+
+          <div class="round-status" aria-live="polite">
+            <p class="round-name" id="round-name">8강</p>
+            <p class="round-match-label">
+              <span id="round-match-current">1</span>/<span id="round-match-total">4</span>
+              경기
+            </p>
+          </div>
 
           <div class="match-container">
             <div class="food-card" id="left-card">
