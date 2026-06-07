@@ -81,7 +81,7 @@ function set_game_result(is_succ, name) {
   }
 
   gameResultMenu.textContent = name;
-  gameEnd.classList.add("show");
+  openGameModal(gameEnd);
 }
 
 function shuffleCandidates(candiateList, answer) {
@@ -121,7 +121,7 @@ function initGuessGame() {
   if (!gameMain || !gameEnd || !gameSelect || !gameGrid) return;
 
   gameMain.classList.remove("hidden");
-  gameEnd.classList.remove("show");
+  closeGameModal(gameEnd);
 
   if (gameResultSucc) {
     gameResultSucc.classList.remove("win", "lose");
@@ -197,16 +197,16 @@ function initGuessGame() {
 }
 
 const gameEnd = document.querySelector("#game-end");
+const guessRetryBtn = document.getElementById("guess-retry-btn");
+
+if (guessRetryBtn) {
+  guessRetryBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    window.location.reload();
+  });
+}
 
 if (gameEnd) {
-  gameEnd.addEventListener("click", () => {
-    gameEnd.classList.remove("show");
-  });
-
-  const gameEndContent = gameEnd.querySelector(".modal-content");
-  if (gameEndContent) {
-    gameEndContent.addEventListener("click", (event) => {
-      event.stopPropagation();
-    });
-  }
+  lockGameModalOverlay(gameEnd);
 }

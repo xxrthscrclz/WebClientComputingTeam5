@@ -50,9 +50,6 @@
           >
             룰렛 돌리기
           </button>
-          <a id="roulette-form-link" class="roulette-form-link hidden" href="#"
-            >레시피 추천 받기</a
-          >
         </div>
       </section>
 
@@ -103,19 +100,56 @@
             <li class="game-select-opt">PlaceHolder</li>
           </ol>
         </section>
-    </section>
+      </section>
     </main>
 
-    <div class="modal-overlay" id="game-end">
-        <div class="modal-content">
-            <div class="game-title">정답 공개</div>
-            <div><img class="game-food-image" src="./assets/image/game/placeholder.png" alt="food_image"></div>
-            <div class="game-result"><span class="game-result-succ">(성공! or 실패!)</span> <span> </span> <span class="game-result-menu">메뉴명</span></div>
-            <button class="recipe-redirect-btn">레시피 보러가기</button>
+    <div class="modal-overlay game-modal-overlay" id="game-end">
+      <div class="modal-content">
+        <div class="game-title">정답 공개</div>
+        <div>
+          <img
+            class="game-food-image"
+            src="./assets/image/game/placeholder.png"
+            alt="food_image"
+          />
         </div>
+        <div class="game-result">
+          <span class="game-result-succ">(성공! or 실패!)</span> <span> </span>
+          <span class="game-result-menu">메뉴명</span>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="shortcut-btn recipe-redirect-btn">
+            레시피 추천 받기
+          </button>
+          <button type="button" class="retry-btn" id="guess-retry-btn">
+            다시하기
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="modal-overlay" id="winner-modal">
+    <div class="modal-overlay game-modal-overlay" id="roulette-modal">
+      <div class="modal-content">
+        <h2 class="modal-title">🎰 오늘의 메뉴</h2>
+        <p class="modal-sub">룰렛이 선택한 메뉴예요</p>
+
+        <div class="winner-display">
+          <div class="roulette-modal-emoji" id="roulette-modal-emoji">🍽️</div>
+          <div class="food-name" id="roulette-modal-name">메뉴명</div>
+        </div>
+
+        <div class="modal-actions">
+          <a href="#" class="shortcut-btn" id="roulette-modal-link"
+            >레시피 추천 받기</a
+          >
+          <button type="button" class="retry-btn" id="roulette-retry-btn">
+            다시하기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay game-modal-overlay" id="winner-modal">
       <div class="modal-content">
         <h2 class="modal-title">축하합니다! 🏆</h2>
         <p class="modal-sub">오늘의 우승 메뉴</p>
@@ -125,11 +159,19 @@
           <div class="food-name" id="winner-name">우승 음식</div>
         </div>
 
-        <a href="#" class="shortcut-btn" id="shortcut-link">레시피 가기</a>
+        <div class="modal-actions">
+          <a href="#" class="shortcut-btn" id="shortcut-link"
+            >레시피 추천 받기</a
+          >
+          <button type="button" class="retry-btn" id="tournament-retry-btn">
+            다시하기
+          </button>
+        </div>
       </div>
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/game-modal.js"></script>
     <script src="js/tournament-game.js"></script>
     <script src="js/roulette-game.js"></script>
     <script src="js/game.js"></script>

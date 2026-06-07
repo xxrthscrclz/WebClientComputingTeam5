@@ -71,7 +71,11 @@ function showCurrentMatch() {
 function openWinnerModal(food) {
   setFoodCard(winnerImg, winnerName, food);
   shortcutLink.href = `form.html?menu=${food.key}&source=tournament`;
-  winnerModal.classList.add("show");
+  openGameModal(winnerModal);
+}
+
+function closeWinnerModal() {
+  closeGameModal(winnerModal);
 }
 
 function startRound(foods) {
@@ -82,7 +86,14 @@ function startRound(foods) {
   showCurrentMatch();
 }
 
-function pickWinner(side) {
+function pickWinner(side, event) {
+  if (winnerModal?.classList.contains("show")) return;
+
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   const winner = side === "left"
     ? currentRound[matchIndex * 2]
     : currentRound[matchIndex * 2 + 1];
@@ -96,7 +107,8 @@ function pickWinner(side) {
   }
 
   if (nextRound.length === 1) {
-    openWinnerModal(nextRound[0]);
+    const finalWinner = nextRound[0];
+    requestAnimationFrame(() => openWinnerModal(finalWinner));
     return;
   }
 
@@ -106,30 +118,28 @@ function pickWinner(side) {
 //  초기화  (새로고침,헤더 클릭 시)
 function initTournament() {
   if (!leftCard || !rightCard) return;
-  if (winnerModal) winnerModal.classList.remove("show");
+  closeWinnerModal();
   startRound(shuffle(tournamentFoods));
 }
 
 if (leftCard) {
-  leftCard.addEventListener("click", () => pickWinner("left"));
+  leftCard.addEventListener("click", (event) => pickWinner("left", event));
 }
 
 if (rightCard) {
-  rightCard.addEventListener("click", () => pickWinner("right"));
+  rightCard.addEventListener("click", (event) => pickWinner("right", event));
 }
 
-// 
-if (winnerModal) {
-  winnerModal.addEventListener("click", (event) => {
-    if (event.target === winnerModal) {
-      winnerModal.classList.remove("show");
-    }
+const tournamentRetryBtn = document.getElementById("tournament-retry-btn");
+
+if (tournamentRetryBtn) {
+  tournamentRetryBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    window.location.reload();
   });
-  
-  const modalContent = winnerModal.querySelector(".modal-content");
-  if (modalContent) {
-    modalContent.addEventListener("click", (event) => {
-      event.stopPropagation();
-    });
-  }
+}
+
+if (winnerModal) {
+  lockGameModalOverlay(winnerModal);
 }

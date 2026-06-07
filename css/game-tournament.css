@@ -63,29 +63,6 @@
   color: var(--point-color-1);
 }
 
-#winner-modal.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 24px;
-}
-
-#winner-modal.modal-overlay.show {
-  display: flex;
-}
-
-#winner-modal .modal-content {
-  width: min(420px, 100%);
-  padding: 28px 24px;
-  border-radius: 12px;
-  background: #fff;
-  text-align: center;
-}
-
 #winner-modal .modal-title {
   font-size: 28px;
   font-weight: 800;
@@ -105,23 +82,6 @@
 .winner-display .image-placeholder {
   max-width: 220px;
   margin: 0 auto;
-}
-
-.shortcut-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 0 20px;
-  border-radius: 10px;
-  background-color: var(--main-color);
-  color: var(--white-text-color);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.shortcut-btn:hover {
-  background-color: var(--sub-color-1);
 }
 
 @media (max-width: 768px) {

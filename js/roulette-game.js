@@ -12,7 +12,11 @@ const rouletteMenus = [
 const rouletteWheel = document.getElementById("roulette-wheel");
 const rouletteSpinBtn = document.getElementById("roulette-spin-btn");
 const rouletteResult = document.getElementById("roulette-result");
-const rouletteFormLink = document.getElementById("roulette-form-link");
+const rouletteModal = document.getElementById("roulette-modal");
+const rouletteModalEmoji = document.getElementById("roulette-modal-emoji");
+const rouletteModalName = document.getElementById("roulette-modal-name");
+const rouletteModalLink = document.getElementById("roulette-modal-link");
+const rouletteRetryBtn = document.getElementById("roulette-retry-btn");
 
 const SEGMENT_DEG = 360 / rouletteMenus.length;
 let isSpinning = false;
@@ -52,12 +56,28 @@ function buildRouletteWheel() {
   `;
 }
 
+function openRouletteModal(menu) {
+  if (!rouletteModal) return;
+
+  if (rouletteModalEmoji) rouletteModalEmoji.textContent = menu.emoji;
+  if (rouletteModalName) rouletteModalName.textContent = menu.name;
+  if (rouletteModalLink) {
+    rouletteModalLink.href = `form.html?menu=${menu.key}&source=roulette`;
+  }
+
+  openGameModal(rouletteModal);
+}
+
 function spinRoulette() {
   if (!rouletteWheel || !rouletteSpinBtn || isSpinning) return;
 
   isSpinning = true;
   rouletteSpinBtn.disabled = true;
-  rouletteFormLink.classList.add("hidden");
+  closeGameModal(rouletteModal);
+
+  if (rouletteResult) {
+    rouletteResult.textContent = "룰렛이 돌아가는 중...";
+  }
 
   const winIndex = Math.floor(Math.random() * rouletteMenus.length);
   selectedMenu = rouletteMenus[winIndex];
@@ -71,9 +91,12 @@ function spinRoulette() {
   window.setTimeout(() => {
     isSpinning = false;
     rouletteSpinBtn.disabled = false;
-    rouletteResult.textContent = `오늘의 메뉴: ${selectedMenu.emoji} ${selectedMenu.name}`;
-    rouletteFormLink.href = `form.html?menu=${selectedMenu.key}&source=roulette`;
-    rouletteFormLink.classList.remove("hidden");
+
+    if (rouletteResult) {
+      rouletteResult.textContent = "오늘의 메뉴가 정해졌어요!";
+    }
+
+    openRouletteModal(selectedMenu);
   }, 4000);
 }
 
@@ -94,12 +117,21 @@ function initRoulette() {
     rouletteResult.textContent = "버튼을 눌러 룰렛을 돌려보세요";
   }
 
-  if (rouletteFormLink) {
-    rouletteFormLink.classList.add("hidden");
-    rouletteFormLink.href = "#";
-  }
+  closeGameModal(rouletteModal);
 }
 
 if (rouletteSpinBtn) {
   rouletteSpinBtn.addEventListener("click", spinRoulette);
+}
+
+if (rouletteRetryBtn) {
+  rouletteRetryBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    window.location.reload();
+  });
+}
+
+if (rouletteModal) {
+  lockGameModalOverlay(rouletteModal);
 }
