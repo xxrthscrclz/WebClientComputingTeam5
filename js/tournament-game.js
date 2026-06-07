@@ -106,7 +106,7 @@ function pickWinner(side) {
 //  초기화  (새로고침,헤더 클릭 시)
 function initTournament() {
   if (!leftCard || !rightCard) return;
-  if (winnerModal) winnerModal.classList.remove("show"); // 모달 닫기
+  if (winnerModal) winnerModal.classList.remove("show");
   startRound(shuffle(tournamentFoods));
 }
 
@@ -133,5 +133,3 @@ if (winnerModal) {
     });
   }
 }
-
-initTournament();

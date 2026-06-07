@@ -8,13 +8,17 @@ const gamePanels = {
   guess: document.getElementById("guess-game"),
 };
 
-const gameLabels = {
-  roulette: "룰렛 게임",
-  tournament: "토너먼트 게임",
-  guess: "음식 맞추기 게임",
-};
-
 const DEFAULT_GAME = "tournament";
+
+function initActiveGame(gameKey) {
+  if (gameKey === "roulette" && typeof initRoulette === "function") {
+    initRoulette();
+  } else if (gameKey === "tournament" && typeof initTournament === "function") {
+    initTournament();
+  } else if (gameKey === "guess" && typeof initGuessGame === "function") {
+    initGuessGame();
+  }
+}
 
 function showGame(gameKey) {
   const activeKey = gamePanels[gameKey] ? gameKey : DEFAULT_GAME;
@@ -23,6 +27,8 @@ function showGame(gameKey) {
     if (!panel) return;
     panel.classList.toggle("is-active", key === activeKey);
   });
+
+  initActiveGame(activeKey);
 }
 
 function getGameKeyFromUrl() {
@@ -49,6 +55,12 @@ if (gameNav) {
       }
     });
   });
-}
 
-showGame(getGameKeyFromUrl());
+  showGame(getGameKeyFromUrl());
+
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+      showGame(getGameKeyFromUrl());
+    }
+  });
+}

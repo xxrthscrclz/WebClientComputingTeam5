@@ -77,7 +77,28 @@ function spinRoulette() {
   }, 4000);
 }
 
-buildRouletteWheel();
+function initRoulette() {
+  isSpinning = false;
+  selectedMenu = null;
+
+  if (rouletteSpinBtn) {
+    rouletteSpinBtn.disabled = false;
+  }
+
+  if (rouletteWheel) {
+    rouletteWheel.style.transform = "";
+    buildRouletteWheel();
+  }
+
+  if (rouletteResult) {
+    rouletteResult.textContent = "버튼을 눌러 룰렛을 돌려보세요";
+  }
+
+  if (rouletteFormLink) {
+    rouletteFormLink.classList.add("hidden");
+    rouletteFormLink.href = "#";
+  }
+}
 
 if (rouletteSpinBtn) {
   rouletteSpinBtn.addEventListener("click", spinRoulette);

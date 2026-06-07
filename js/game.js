@@ -36,17 +36,6 @@ const wrongAnswerList = [
 
 const effectList = ["effect-blur", "effect-blank"];
 
-const gameMain = document.querySelector("#game-main");
-const gameEnd = document.querySelector("#game-end");
-const gameGrid = document.querySelector("#guess-game .game-grid-container");
-const gameSelect = document.querySelector("#guess-game .game-select");
-const gameResult = {
-  succ: document.querySelector(".game-result-succ"),
-  menu: document.querySelector(".game-result-menu"),
-};
-const gameFoodImage = document.querySelector(".game-food-image");
-const toRecipe = document.querySelector(".recipe-redirect-btn");
-
 function get_random_food() {
   return foodList[Math.floor(Math.random() * foodList.length)];
 }
@@ -75,103 +64,140 @@ function get_form_url(name) {
 }
 
 function set_game_result(is_succ, name) {
-  if (!gameMain || !gameEnd) return;
+  const gameEnd = document.querySelector("#game-end");
+  const gameResultSucc = document.querySelector(".game-result-succ");
+  const gameResultMenu = document.querySelector(".game-result-menu");
 
-  gameResult.succ.classList.remove("win", "lose");
+  if (!gameEnd || !gameResultSucc || !gameResultMenu) return;
+
+  gameResultSucc.classList.remove("win", "lose");
 
   if (is_succ) {
-    gameResult.succ.innerText = "성공!";
-    gameResult.succ.classList.add("win");
+    gameResultSucc.innerText = "성공!";
+    gameResultSucc.classList.add("win");
   } else {
-    gameResult.succ.innerText = "실패..";
-    gameResult.succ.classList.add("lose");
+    gameResultSucc.innerText = "실패..";
+    gameResultSucc.classList.add("lose");
   }
 
-  gameResult.menu.textContent = name;
+  gameResultMenu.textContent = name;
   gameEnd.classList.add("show");
 }
 
-function init_guess_game() {
+function shuffleCandidates(candiateList, answer) {
+  for (let i = 0; i < candiateList.length; i++) {
+    if (candiateList[i] === answer) {
+      const tmp = candiateList[i];
+      candiateList[i] = candiateList[0];
+      candiateList[0] = tmp;
+      break;
+    }
+  }
+
+  for (let i = 1; i < 4; i++) {
+    const random = Math.floor(Math.random() * (candiateList.length - i)) + i;
+    const tmp = candiateList[random];
+    candiateList[random] = candiateList[i];
+    candiateList[i] = tmp;
+  }
+
+  const random = Math.floor(Math.random() * 4);
+  const tmp = candiateList[random];
+  candiateList[random] = candiateList[0];
+  candiateList[0] = tmp;
+
+  return candiateList;
+}
+
+function initGuessGame() {
+  const gameMain = document.querySelector("#game-main");
+  const gameEnd = document.querySelector("#game-end");
+  const gameGrid = document.querySelector("#guess-game .game-grid-container");
+  const gameSelect = document.querySelector("#guess-game .game-select");
+  const gameFoodImage = document.querySelector(".game-food-image");
+  const toRecipe = document.querySelector(".recipe-redirect-btn");
+  const gameResultSucc = document.querySelector(".game-result-succ");
+
+  if (!gameMain || !gameEnd || !gameSelect || !gameGrid) return;
+
   gameMain.classList.remove("hidden");
   gameEnd.classList.remove("show");
 
+  if (gameResultSucc) {
+    gameResultSucc.classList.remove("win", "lose");
+  }
+
+  const elements = gameGrid.querySelectorAll(".game-grid-element");
+  elements.forEach((el) => {
+    el.style.backgroundImage = "";
+    el.style.backgroundSize = "";
+    el.style.backgroundPosition = "";
+    el.classList.remove("effect-blur", "effect-blank");
+    el.style.removeProperty("--random-duration");
+  });
+
   const answer = get_random_food();
-    const candiateList = get_candidate_list();
+  const candiateList = shuffleCandidates(get_candidate_list(), answer);
 
-    for (let i = 0; i < candiateList.length; i++) {
-      if (candiateList[i] === answer) {
-        const tmp = candiateList[i];
-        candiateList[i] = candiateList[0];
-        candiateList[0] = tmp;
-        break;
-      }
-    }
+  const newSelect = document.createElement("ol");
+  newSelect.className = "game-select";
 
-    for (let i = 1; i < 4; i++) {
-      const random = Math.floor(Math.random() * (candiateList.length - i)) + i;
-      const tmp = candiateList[random];
-      candiateList[random] = candiateList[i];
-      candiateList[i] = tmp;
-    }
+  for (let i = 0; i < 4; i++) {
+    const opt = document.createElement("li");
+    opt.className = "game-select-opt";
+    opt.innerText = `${i + 1}. ${candiateList[i]}`;
+    opt.addEventListener(
+      "click",
+      ((is_succ, menuName) => () => set_game_result(is_succ, menuName))(
+        candiateList[i] === answer,
+        answer,
+      ),
+    );
+    newSelect.appendChild(opt);
+  }
 
-    const random = Math.floor(Math.random() * 4);
-    const tmp = candiateList[random];
-    candiateList[random] = candiateList[0];
-    candiateList[0] = tmp;
+  gameSelect.replaceWith(newSelect);
 
-    const opts = gameSelect.querySelectorAll("li");
-    for (let i = 0; i < 4; i++) {
-      opts[i].innerText = `${i + 1}. ${candiateList[i]}`;
-      opts[i].addEventListener(
-        "click",
-        ((is_succ, menuName) => () => set_game_result(is_succ, menuName))(
-          candiateList[i] === answer,
-          answer,
-        ),
-      );
-    }
+  const answer_src = get_food_img_src(answer);
+  if (gameFoodImage) {
+    gameFoodImage.src = answer_src;
+  }
 
-    const answer_src = get_food_img_src(answer);
-    if (gameFoodImage) {
-      gameFoodImage.src = answer_src;
-    }
+  if (toRecipe) {
+    toRecipe.onclick = () => {
+      window.location.href = get_form_url(answer);
+    };
+  }
 
-    if (toRecipe) {
-      toRecipe.addEventListener("click", () => {
-        window.location.href = get_form_url(answer);
-      });
-    }
+  const visibleGrid = Array.from(elements);
+  const visible = Math.floor(Math.random() * 4) + 6;
 
-    const elements = gameGrid.querySelectorAll(".game-grid-element");
-    const visibleGrid = Array.from(elements);
-    const visible = Math.floor(Math.random() * 4) + 6;
+  for (let i = 0; i < visible; i++) {
+    const randomIndex =
+      Math.floor(Math.random() * (visibleGrid.length - i)) + i;
+    const swap = visibleGrid[randomIndex];
+    visibleGrid[randomIndex] = visibleGrid[i];
+    visibleGrid[i] = swap;
+  }
 
-    for (let i = 0; i < visible; i++) {
-      const randomIndex =
-        Math.floor(Math.random() * (visibleGrid.length - i)) + i;
-      const swap = visibleGrid[randomIndex];
-      visibleGrid[randomIndex] = visibleGrid[i];
-      visibleGrid[i] = swap;
-    }
+  for (let i = 0; i < visible; i++) {
+    visibleGrid[i].style.backgroundImage = `url(${answer_src})`;
+  }
 
-    for (let i = 0; i < visible; i++) {
-      visibleGrid[i].style.backgroundImage = `url(${answer_src})`;
-    }
+  elements.forEach((el, i) => {
+    const col = i % 4;
+    const row = Math.floor(i / 4);
+    const effect = effectList[Math.floor(Math.random() * effectList.length)];
 
-    elements.forEach((el, i) => {
-      const col = i % 4;
-      const row = Math.floor(i / 4);
-      const effect = effectList[Math.floor(Math.random() * effectList.length)];
-
-      el.style.backgroundSize = "400% 300%";
-      el.style.backgroundPosition = `${(col / 3) * 100}% ${(row / 2) * 100}%`;
-      el.classList.add(effect);
-      el.style.setProperty("--random-duration", `${Math.random() * 2 + 1}s`);
-    });
+    el.style.backgroundSize = "400% 300%";
+    el.style.backgroundPosition = `${(col / 3) * 100}% ${(row / 2) * 100}%`;
+    el.classList.add(effect);
+    el.style.setProperty("--random-duration", `${Math.random() * 2 + 1}s`);
+  });
 }
 
-//TODO: 
-// game-nav.js에서 호출되게 하고, 이 구문 삭제
+const gameEnd = document.querySelector("#game-end");
+
 if (gameEnd) {
   gameEnd.addEventListener("click", () => {
     gameEnd.classList.remove("show");
@@ -184,5 +210,3 @@ if (gameEnd) {
     });
   }
 }
-
-document.addEventListener("DOMContentLoaded", init_guess_game);
