@@ -85,7 +85,8 @@ if (menuKey) {
       key !== "menu" &&
       key !== "source" &&
       key !== "serving" &&
-      key !== "topping"
+      key !== "topping" &&
+      key !== "sauce"
     ) {
       addFormParam(key, value);
     }
@@ -101,17 +102,70 @@ if (menuKey) {
         return item && item !== "없음" && item !== "상관없음";
       });
   }
+
+  var sauces = params.getAll("sauce");
+  if (sauces.length > 0) {
+    formParams.sauce = sauces
+      .map(function (item) {
+        return normalizeValue(item.trim());
+      })
+      .filter(function (item) {
+        return item && item !== "없음";
+      });
+  }
+}
+
+function getCurrentMenuToppingIngredientNames() {
+  var toppingNames = [];
+
+  if (!menuKey || !menuOptions[menuKey]) {
+    return toppingNames;
+  }
+
+  menuOptions[menuKey].fields.forEach(function (field) {
+    if (field.id !== "topping") return;
+
+    field.options.forEach(function (optionName) {
+      var info = toppingIngredients[optionName];
+
+      if (info && toppingNames.indexOf(info.name) === -1) {
+        toppingNames.push(info.name);
+      }
+    });
+  });
+
+  return toppingNames;
 }
 
 function buildIngredients() {
-  var list = food.ingredients.map(function (ing) {
-    return {
-      name: ing.name,
-      amount: parseFloat((ing.amount * serving).toFixed(1)),
-      unit: ing.unit,
-      base: ing.amount,
-    };
-  });
+  var currentMenuToppingIngredientNames =
+    getCurrentMenuToppingIngredientNames();
+
+  var list = food.ingredients
+    .filter(function (ing) {
+      return currentMenuToppingIngredientNames.indexOf(ing.name) === -1;
+    })
+    .filter(function (ing) {
+      if (foodKey === "KIMCHI_RICE") {
+        var hasEggTopping =
+          Array.isArray(formParams.topping) &&
+          formParams.topping.indexOf("계란") !== -1;
+
+        if (!hasEggTopping) {
+          return ing.name !== "계란";
+        }
+      }
+
+      return true;
+    })
+    .map(function (ing) {
+      return {
+        name: ing.name,
+        amount: parseFloat((ing.amount * serving).toFixed(1)),
+        unit: ing.unit,
+        base: ing.amount,
+      };
+    });
 
   var spicy = spicyModifiers[formParams.spicyLevel];
 
@@ -305,6 +359,50 @@ function buildOptionTips() {
   return tips;
 }
 
+function renderOptionTags() {
+  var optionKeys = Object.keys(formParams).filter(function (k) {
+    return k !== "topping";
+  });
+
+  var hasOptions =
+    optionKeys.length > 0 ||
+    (Array.isArray(formParams.topping) && formParams.topping.length > 0);
+
+  if (!hasOptions) return;
+
+  var optBox = document.getElementById("selected-options");
+  var tagsWrap = document.getElementById("options-tags");
+
+  optBox.style.display = "block";
+  tagsWrap.innerHTML = "";
+
+  optionKeys.forEach(function (k) {
+    if (Array.isArray(formParams[k])) {
+      formParams[k].forEach(function (value) {
+        var tag = document.createElement("span");
+        tag.className = "option-tag";
+        tag.textContent = value;
+        tagsWrap.appendChild(tag);
+      });
+      return;
+    }
+
+    var tag = document.createElement("span");
+    tag.className = "option-tag";
+    tag.textContent = formParams[k];
+    tagsWrap.appendChild(tag);
+  });
+
+  if (Array.isArray(formParams.topping)) {
+    formParams.topping.forEach(function (t) {
+      var tag = document.createElement("span");
+      tag.className = "option-tag option-tag-topping";
+      tag.textContent = t;
+      tagsWrap.appendChild(tag);
+    });
+  }
+}
+
 function renderPage() {
   document.title = "오늘 뭐 먹지? - " + food.name;
 
@@ -338,37 +436,7 @@ function renderPage() {
     placeholder.style.display = "none";
   };
 
-  var optionKeys = Object.keys(formParams).filter(function (k) {
-    return k !== "topping";
-  });
-
-  var hasOptions =
-    optionKeys.length > 0 ||
-    (Array.isArray(formParams.topping) && formParams.topping.length > 0);
-
-  if (hasOptions) {
-    var optBox = document.getElementById("selected-options");
-    var tagsWrap = document.getElementById("options-tags");
-
-    optBox.style.display = "block";
-    tagsWrap.innerHTML = "";
-
-    optionKeys.forEach(function (k) {
-      var tag = document.createElement("span");
-      tag.className = "option-tag";
-      tag.textContent = formParams[k];
-      tagsWrap.appendChild(tag);
-    });
-
-    if (Array.isArray(formParams.topping)) {
-      formParams.topping.forEach(function (t) {
-        var tag = document.createElement("span");
-        tag.className = "option-tag option-tag-topping";
-        tag.textContent = t;
-        tagsWrap.appendChild(tag);
-      });
-    }
-  }
+  renderOptionTags();
 
   var optionTips = buildOptionTips();
 
