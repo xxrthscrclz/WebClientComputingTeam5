@@ -84,17 +84,22 @@ if (menuKey) {
       key !== "food" &&
       key !== "menu" &&
       key !== "source" &&
-      key !== "serving"
+      key !== "serving" &&
+      key !== "topping"
     ) {
       addFormParam(key, value);
     }
   });
 
-  var toppingRaw = params.get("topping");
-  if (toppingRaw) {
-    formParams.topping = toppingRaw.split(",").map(function (item) {
-      return normalizeValue(item.trim());
-    });
+  var toppings = params.getAll("topping");
+  if (toppings.length > 0) {
+    formParams.topping = toppings
+      .map(function (item) {
+        return normalizeValue(item.trim());
+      })
+      .filter(function (item) {
+        return item && item !== "없음" && item !== "상관없음";
+      });
   }
 }
 
@@ -220,7 +225,17 @@ function buildOptionTips() {
     });
   }
 
-  if (formParams.sauce && shabuModifiers.sauce[formParams.sauce]) {
+  if (Array.isArray(formParams.sauce)) {
+    formParams.sauce.forEach(function (sauce) {
+      if (shabuModifiers.sauce[sauce]) {
+        tips.push({
+          icon: "🥣",
+          title: "소스: " + sauce,
+          text: shabuModifiers.sauce[sauce].tip,
+        });
+      }
+    });
+  } else if (formParams.sauce && shabuModifiers.sauce[formParams.sauce]) {
     tips.push({
       icon: "🥣",
       title: "소스: " + formParams.sauce,
