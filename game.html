@@ -18,7 +18,15 @@
   <body>
     <header>
       <div id="header">
-        <div id="title">오늘 뭐 먹지?</div>
+        <div id="title">
+          <img
+            class="title-logo"
+            src="./assets/icon/logoIcon.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="title-text">오늘 뭐 먹지?</span>
+        </div>
         <div id="nav">
           <div data-game="roulette">룰렛 게임</div>
           <div data-game="tournament">토너먼트 게임</div>
@@ -60,7 +68,10 @@
           <div class="round-status" aria-live="polite">
             <p class="round-name" id="round-name">8강</p>
             <p class="round-match-label">
-              <span id="round-match-current">1</span>/<span id="round-match-total">4</span>
+              <span id="round-match-current">1</span>/<span
+                id="round-match-total"
+                >4</span
+              >
               경기
             </p>
           </div>

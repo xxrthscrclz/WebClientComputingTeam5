@@ -2,7 +2,7 @@ const foodList = {
   TTEOKBOKKI: {
     name: "떡볶이",
     emoji: "🌶️",
-    src: "images/tteokbokki.jpg",
+    src: "assets/image/recipe-image/tteokbokki.jpg",
     category: "한식 · 분식",
     description:
       "너무 간단한데 맛있어서 놀라는 백종원 분식점 떡볶이! 고추장과 고추가루를 함께 써서 색도 예쁘고 맛도 깊어요.",
@@ -10,14 +10,14 @@ const foodList = {
     difficulty: "★☆☆",
     diffLabel: "쉬움",
     ingredients: [
-      { name: "떡볶이떡", amount: 1, unit: "컵" },
-      { name: "물", amount: 1, unit: "컵" },
-      { name: "대파", amount: 0.25, unit: "대" },
-      { name: "통깨", amount: 1, unit: "약간" },
-      { name: "고추장", amount: 1, unit: "큰술" },
-      { name: "고추가루", amount: 0.75, unit: "큰술" },
-      { name: "간장", amount: 1, unit: "큰술" },
-      { name: "설탕", amount: 1.5, unit: "큰술" },
+      {name: "떡볶이떡", amount: 1, unit: "컵"},
+      {name: "물", amount: 1, unit: "컵"},
+      {name: "대파", amount: 0.25, unit: "대"},
+      {name: "통깨", amount: 1, unit: "약간"},
+      {name: "고추장", amount: 1, unit: "큰술"},
+      {name: "고추가루", amount: 0.75, unit: "큰술"},
+      {name: "간장", amount: 1, unit: "큰술"},
+      {name: "설탕", amount: 1.5, unit: "큰술"},
     ],
     steps: [
       {
@@ -77,13 +77,13 @@ const foodList = {
           afterStep: 3,
           text: "💡 불을 끄기 직전 슬라이스 치즈를 올려 녹여주세요.",
         },
-        소시지: { afterStep: 0, text: "💡 소시지를 어슷썰어 준비해주세요." },
+        소시지: {afterStep: 0, text: "💡 소시지를 어슷썰어 준비해주세요."},
         차돌박이: {
           afterStep: 1,
           text: "💡 차돌박이를 양념에 함께 넣고 익혀주세요.",
         },
-        김말이: { afterStep: 2, text: "💡 김말이를 함께 넣고 끓여주세요." },
-        만두: { afterStep: 2, text: "💡 냉동 만두를 함께 넣고 익혀주세요." },
+        김말이: {afterStep: 2, text: "💡 김말이를 함께 넣고 끓여주세요."},
+        만두: {afterStep: 2, text: "💡 냉동 만두를 함께 넣고 익혀주세요."},
         오뎅: {
           afterStep: 0,
           text: "💡 어묵을 먹기 좋게 잘라 처음부터 함께 끓여주세요.",
@@ -113,7 +113,7 @@ const foodList = {
   KIMCHI_RICE: {
     name: "김치볶음밥",
     emoji: "🍳",
-    src: "images/kimchi_rice.jpg",
+    src: "assets/image/recipe-image/kimchi_rice.jpg",
     category: "한식 · 볶음",
     description:
       "전혀 새로운 맛의 김치볶음밥! 마요네즈와 된장이 들어가 깊고 고소한 맛이 나는 특별한 레시피예요.",
@@ -121,17 +121,17 @@ const foodList = {
     difficulty: "★☆☆",
     diffLabel: "쉬움",
     ingredients: [
-      { name: "김치", amount: 0.5, unit: "컵" },
-      { name: "밥", amount: 1, unit: "공기 (햇반 210g)" },
-      { name: "식용유", amount: 1.5, unit: "스푼" },
-      { name: "설탕", amount: 0.5, unit: "스푼" },
-      { name: "진간장", amount: 0.5, unit: "스푼" },
-      { name: "고추가루", amount: 0.5, unit: "스푼" },
-      { name: "참기름", amount: 1, unit: "스푼" },
-      { name: "마요네즈", amount: 0.5, unit: "스푼" },
-      { name: "된장", amount: 0.17, unit: "스푼" },
-      { name: "파", amount: 1, unit: "큰술" },
-      { name: "계란", amount: 1, unit: "개" },
+      {name: "김치", amount: 0.5, unit: "컵"},
+      {name: "밥", amount: 1, unit: "공기 (햇반 210g)"},
+      {name: "식용유", amount: 1.5, unit: "스푼"},
+      {name: "설탕", amount: 0.5, unit: "스푼"},
+      {name: "진간장", amount: 0.5, unit: "스푼"},
+      {name: "고추가루", amount: 0.5, unit: "스푼"},
+      {name: "참기름", amount: 1, unit: "스푼"},
+      {name: "마요네즈", amount: 0.5, unit: "스푼"},
+      {name: "된장", amount: 0.17, unit: "스푼"},
+      {name: "파", amount: 1, unit: "큰술"},
+      {name: "계란", amount: 1, unit: "개"},
     ],
     steps: [
       {
@@ -157,11 +157,11 @@ const foodList = {
         text: "별도 팬에 식용유를 살짝 두르고 계란을 깨서 익혀주세요. 볶음밥 위에 올려주세요.",
         time: "2분",
       },
-      { title: "완성", text: "맛있는 김치볶음밥 완성! 🎉" },
+      {title: "완성", text: "맛있는 김치볶음밥 완성! 🎉"},
     ],
     optionSteps: {
       spicyLevel: {
-        순한맛: { afterStep: 1, text: "💡 순한맛: 고추가루를 생략해주세요." },
+        순한맛: {afterStep: 1, text: "💡 순한맛: 고추가루를 생략해주세요."},
         보통맛: null,
         매운맛: {
           afterStep: 1,
@@ -169,7 +169,7 @@ const foodList = {
         },
       },
       eggStyle: {
-        없음: { removeStep: 4, text: "" },
+        없음: {removeStep: 4, text: ""},
         반숙: {
           modifyStep: 4,
           text: "별도 팬에 식용유를 두르고 계란을 깨서 넣어주세요. 흰자가 익으면 바로 불을 꺼주세요. 노른자가 살짝 흐르는 반숙 완성! 볶음밥 위에 올려주세요.",
@@ -239,7 +239,7 @@ const foodList = {
   DAK_BOKKEUM: {
     name: "닭볶음탕",
     emoji: "🍗",
-    src: "images/dak_bokkeum.jpg",
+    src: "assets/image/recipe-image/dak_bokkeum.jpg",
     category: "한식 · 찜·탕",
     description:
       "맛집 닭볶음탕 거의 흡사한 맛! 자취생은 닭 반 마리로 도전해보세요.",
@@ -247,24 +247,24 @@ const foodList = {
     difficulty: "★★☆",
     diffLabel: "보통",
     ingredients: [
-      { name: "닭", amount: 0.5, unit: "마리" },
-      { name: "감자", amount: 1, unit: "개" },
-      { name: "당근", amount: 0.25, unit: "쪽" },
-      { name: "양파", amount: 0.5, unit: "개" },
-      { name: "고추", amount: 1, unit: "개" },
-      { name: "대파", amount: 0.5, unit: "대" },
-      { name: "다진마늘", amount: 2, unit: "쪽" },
-      { name: "우유", amount: 100, unit: "ml" },
-      { name: "간장", amount: 5, unit: "큰술" },
-      { name: "고추장", amount: 2, unit: "큰술" },
-      { name: "고춧가루", amount: 1, unit: "큰술" },
-      { name: "요리당", amount: 3, unit: "큰술" },
-      { name: "청주", amount: 0.5, unit: "큰술" },
-      { name: "액젓", amount: 0.5, unit: "큰술" },
-      { name: "물", amount: 400, unit: "ml" },
-      { name: "당면 (선택)", amount: 1, unit: "약간" },
-      { name: "참기름", amount: 1, unit: "약간" },
-      { name: "후추", amount: 1, unit: "약간" },
+      {name: "닭", amount: 0.5, unit: "마리"},
+      {name: "감자", amount: 1, unit: "개"},
+      {name: "당근", amount: 0.25, unit: "쪽"},
+      {name: "양파", amount: 0.5, unit: "개"},
+      {name: "고추", amount: 1, unit: "개"},
+      {name: "대파", amount: 0.5, unit: "대"},
+      {name: "다진마늘", amount: 2, unit: "쪽"},
+      {name: "우유", amount: 100, unit: "ml"},
+      {name: "간장", amount: 5, unit: "큰술"},
+      {name: "고추장", amount: 2, unit: "큰술"},
+      {name: "고춧가루", amount: 1, unit: "큰술"},
+      {name: "요리당", amount: 3, unit: "큰술"},
+      {name: "청주", amount: 0.5, unit: "큰술"},
+      {name: "액젓", amount: 0.5, unit: "큰술"},
+      {name: "물", amount: 400, unit: "ml"},
+      {name: "당면 (선택)", amount: 1, unit: "약간"},
+      {name: "참기름", amount: 1, unit: "약간"},
+      {name: "후추", amount: 1, unit: "약간"},
     ],
     steps: [
       {
@@ -296,7 +296,7 @@ const foodList = {
         text: "대파, 양파, 당근, 고추를 적당한 크기로 잘라 넣고 한번 더 끓여주세요.",
         time: "5분",
       },
-      { title: "마무리", text: "참기름을 살짝 두르면 완성! 🎉" },
+      {title: "마무리", text: "참기름을 살짝 두르면 완성! 🎉"},
     ],
     optionSteps: {
       spicyLevel: {
@@ -311,7 +311,7 @@ const foodList = {
         },
       },
       saltyLevel: {
-        싱겁게: { afterStep: 2, text: "💡 싱겁게: 간장을 3큰술로 줄여주세요." },
+        싱겁게: {afterStep: 2, text: "💡 싱겁게: 간장을 3큰술로 줄여주세요."},
         보통: null,
         짭짤하게: {
           afterStep: 2,
@@ -324,7 +324,7 @@ const foodList = {
           afterStep: 4,
           text: "💡 고구마를 감자 대신 또는 함께 넣어주세요. 달콤한 맛이 어울려요.",
         },
-        떡: { afterStep: 5, text: "💡 떡을 채소와 함께 넣고 끓여주세요." },
+        떡: {afterStep: 5, text: "💡 떡을 채소와 함께 넣고 끓여주세요."},
         라면사리: {
           afterStep: 5,
           text: "💡 라면사리를 마지막 5분 전에 넣고 끓여주세요.",
@@ -371,7 +371,7 @@ const foodList = {
   SHABU: {
     name: "샤브샤브",
     emoji: "🍲",
-    src: "images/shabu.jpg",
+    src: "assets/image/recipe-image/shabu.jpg",
     category: "한식 · 전골",
     description:
       "가쓰오부시 장국으로 만드는 간단 샤브샤브! 마지막에 계란죽까지 해먹으면 완벽한 한 끼예요.",
@@ -379,15 +379,15 @@ const foodList = {
     difficulty: "★☆☆",
     diffLabel: "쉬움",
     ingredients: [
-      { name: "업진살 소고기 (샤브용)", amount: 200, unit: "g" },
-      { name: "청경채", amount: 0.5, unit: "봉지" },
-      { name: "숙주", amount: 0.5, unit: "봉지" },
-      { name: "배추", amount: 0.5, unit: "봉지" },
-      { name: "국수장국가쓰오부시", amount: 60, unit: "ml" },
-      { name: "물", amount: 1, unit: "적당량" },
-      { name: "밥 (마무리용, 선택)", amount: 1, unit: "공기" },
-      { name: "계란 (마무리용, 선택)", amount: 1, unit: "개" },
-      { name: "김가루 (마무리용, 선택)", amount: 1, unit: "약간" },
+      {name: "업진살 소고기 (샤브용)", amount: 200, unit: "g"},
+      {name: "청경채", amount: 0.5, unit: "봉지"},
+      {name: "숙주", amount: 0.5, unit: "봉지"},
+      {name: "배추", amount: 0.5, unit: "봉지"},
+      {name: "국수장국가쓰오부시", amount: 60, unit: "ml"},
+      {name: "물", amount: 1, unit: "적당량"},
+      {name: "밥 (마무리용, 선택)", amount: 1, unit: "공기"},
+      {name: "계란 (마무리용, 선택)", amount: 1, unit: "개"},
+      {name: "김가루 (마무리용, 선택)", amount: 1, unit: "약간"},
     ],
     steps: [
       {
@@ -476,7 +476,7 @@ const foodList = {
   DOENJANG: {
     name: "된장찌개",
     emoji: "🫕",
-    src: "images/doenjang.jpg",
+    src: "assets/image/recipe-image/doenjang.jpg",
     category: "한식 · 찌개",
     description:
       "뚝배기에 글글 끓인 든든한 된장찌개! 느타리버섯과 두부가 듬뿍 들어가 건강하고 맛있어요.",
@@ -484,18 +484,18 @@ const foodList = {
     difficulty: "★☆☆",
     diffLabel: "쉬움",
     ingredients: [
-      { name: "느타리버섯", amount: 1, unit: "줌" },
-      { name: "양파", amount: 0.5, unit: "개" },
-      { name: "애호박", amount: 0.25, unit: "개" },
-      { name: "청양고추", amount: 2, unit: "개" },
-      { name: "두부", amount: 0.25, unit: "모" },
-      { name: "물", amount: 1.5, unit: "종이컵" },
-      { name: "된장", amount: 2, unit: "큰술" },
-      { name: "진간장", amount: 1, unit: "큰술" },
-      { name: "고추가루", amount: 1.5, unit: "큰술" },
-      { name: "다진 마늘", amount: 0.5, unit: "큰술" },
-      { name: "설탕", amount: 0.5, unit: "작은술" },
-      { name: "소금", amount: 1, unit: "간맞추기" },
+      {name: "느타리버섯", amount: 1, unit: "줌"},
+      {name: "양파", amount: 0.5, unit: "개"},
+      {name: "애호박", amount: 0.25, unit: "개"},
+      {name: "청양고추", amount: 2, unit: "개"},
+      {name: "두부", amount: 0.25, unit: "모"},
+      {name: "물", amount: 1.5, unit: "종이컵"},
+      {name: "된장", amount: 2, unit: "큰술"},
+      {name: "진간장", amount: 1, unit: "큰술"},
+      {name: "고추가루", amount: 1.5, unit: "큰술"},
+      {name: "다진 마늘", amount: 0.5, unit: "큰술"},
+      {name: "설탕", amount: 0.5, unit: "작은술"},
+      {name: "소금", amount: 1, unit: "간맞추기"},
     ],
     steps: [
       {
@@ -584,7 +584,7 @@ const foodList = {
   KIMCHI_JJIGAE: {
     name: "김치찌개",
     emoji: "🍲",
-    src: "images/kimchi_jjigae.jpg",
+    src: "assets/image/recipe-image/kimchi_jjigae.jpg",
     category: "한식 · 찌개",
     description:
       "참치 캔 하나로 뚝딱! 20분이면 완성되는 자취생 김치찌개. 묵은 김치가 있으면 더 맛있어요.",
@@ -592,15 +592,15 @@ const foodList = {
     difficulty: "★☆☆",
     diffLabel: "쉬움",
     ingredients: [
-      { name: "김치", amount: 100, unit: "g" },
-      { name: "참치", amount: 0.5, unit: "캔" },
-      { name: "두부", amount: 0.25, unit: "모" },
-      { name: "대파", amount: 1, unit: "약간" },
-      { name: "포도씨유", amount: 0.5, unit: "큰술" },
-      { name: "고춧가루", amount: 1, unit: "약간" },
-      { name: "다진 마늘", amount: 0.5, unit: "큰술" },
-      { name: "설탕", amount: 1, unit: "약간" },
-      { name: "물 (멸치육수)", amount: 300, unit: "ml" },
+      {name: "김치", amount: 100, unit: "g"},
+      {name: "참치", amount: 0.5, unit: "캔"},
+      {name: "두부", amount: 0.25, unit: "모"},
+      {name: "대파", amount: 1, unit: "약간"},
+      {name: "포도씨유", amount: 0.5, unit: "큰술"},
+      {name: "고춧가루", amount: 1, unit: "약간"},
+      {name: "다진 마늘", amount: 0.5, unit: "큰술"},
+      {name: "설탕", amount: 1, unit: "약간"},
+      {name: "물 (멸치육수)", amount: 300, unit: "ml"},
     ],
     steps: [
       {
@@ -608,7 +608,7 @@ const foodList = {
         text: "냄비에 포도씨유를 두르고 김치를 넣어 중불에서 볶아주세요. 설탕과 고춧가루를 넣으면 색이 예뻐지고 윤이 나요.",
         time: "3분",
       },
-      { title: "마늘 추가", text: "볶는 중간에 다진 마늘을 넣어주세요." },
+      {title: "마늘 추가", text: "볶는 중간에 다진 마늘을 넣어주세요."},
       {
         title: "물 붓고 끓이기",
         text: "물 또는 멸치육수 300ml를 붓고 참치를 넣어주세요. 강불로 끓여주세요.",
@@ -657,14 +657,14 @@ const foodList = {
           afterStep: 0,
           text: "💡 차돌박이를 김치와 함께 볶아 기름을 내주세요.",
         },
-        양파: { afterStep: 1, text: "💡 양파를 굵게 썰어 넣어주세요." },
+        양파: {afterStep: 1, text: "💡 양파를 굵게 썰어 넣어주세요."},
         라면사리: {
           afterStep: 2,
           text: "💡 라면사리를 끓는 육수에 넣고 2분 더 끓여주세요.",
           time: "2분",
         },
-        만두: { afterStep: 2, text: "💡 냉동 만두를 넣고 함께 끓여주세요." },
-        떡: { afterStep: 2, text: "💡 떡을 넣고 함께 끓여주세요." },
+        만두: {afterStep: 2, text: "💡 냉동 만두를 넣고 함께 끓여주세요."},
+        떡: {afterStep: 2, text: "💡 떡을 넣고 함께 끓여주세요."},
       },
     },
     tips: [
@@ -690,7 +690,7 @@ const foodList = {
   MIYEOK: {
     name: "미역국",
     emoji: "🥣",
-    src: "images/miyeok.jpg",
+    src: "assets/image/recipe-image/miyeok.jpg",
     category: "한식 · 국",
     description:
       "뽀얗고 진한 미역국! 소고기 없어도 OK. 미역을 참기름에 바짝 볶는 게 핵심이에요.",
@@ -698,14 +698,14 @@ const foodList = {
     difficulty: "★☆☆",
     diffLabel: "쉬움",
     ingredients: [
-      { name: "건미역 (말린 것)", amount: 5, unit: "g" },
-      { name: "소고기 국거리 (선택)", amount: 50, unit: "g" },
-      { name: "참기름", amount: 1, unit: "넉넉히" },
-      { name: "다진마늘", amount: 0.5, unit: "큰술" },
-      { name: "간장", amount: 0.5, unit: "큰술" },
-      { name: "된장", amount: 0.25, unit: "작은술" },
-      { name: "소금", amount: 1, unit: "간맞추기" },
-      { name: "물", amount: 1, unit: "적당량" },
+      {name: "건미역 (말린 것)", amount: 5, unit: "g"},
+      {name: "소고기 국거리 (선택)", amount: 50, unit: "g"},
+      {name: "참기름", amount: 1, unit: "넉넉히"},
+      {name: "다진마늘", amount: 0.5, unit: "큰술"},
+      {name: "간장", amount: 0.5, unit: "큰술"},
+      {name: "된장", amount: 0.25, unit: "작은술"},
+      {name: "소금", amount: 1, unit: "간맞추기"},
+      {name: "물", amount: 1, unit: "적당량"},
     ],
     steps: [
       {
@@ -783,7 +783,7 @@ const foodList = {
           afterStep: 2,
           text: "💡 표고버섯을 얇게 썰어 함께 넣어주세요.",
         },
-        두부: { afterStep: 3, text: "💡 두부를 깍둑썰어 마지막에 넣어주세요." },
+        두부: {afterStep: 3, text: "💡 두부를 깍둑썰어 마지막에 넣어주세요."},
       },
     },
     tips: [
@@ -809,7 +809,7 @@ const foodList = {
   AGLIO_OLIO: {
     name: "알리오올리오 파스타",
     emoji: "🍝",
-    src: "images/aglio_olio.jpg",
+    src: "assets/image/recipe-image/aglio_olio.jpg",
     category: "양식 · 파스타",
     description:
       "초간단 백종원 알리오올리오! 올리브유, 마늘, 면수만 있으면 맛집 파스타 완성이에요.",
@@ -817,14 +817,14 @@ const foodList = {
     difficulty: "★★☆",
     diffLabel: "보통",
     ingredients: [
-      { name: "스파게티면", amount: 100, unit: "g (1인분)" },
-      { name: "올리브유", amount: 4, unit: "큰술" },
-      { name: "통마늘", amount: 2, unit: "개" },
-      { name: "다진마늘", amount: 0.5, unit: "큰술" },
-      { name: "페페론치니", amount: 1, unit: "개" },
-      { name: "소금 (면 삶는 용)", amount: 1, unit: "큰술" },
-      { name: "소금 (간 맞추기)", amount: 1, unit: "약간" },
-      { name: "면수", amount: 1, unit: "국자" },
+      {name: "스파게티면", amount: 100, unit: "g (1인분)"},
+      {name: "올리브유", amount: 4, unit: "큰술"},
+      {name: "통마늘", amount: 2, unit: "개"},
+      {name: "다진마늘", amount: 0.5, unit: "큰술"},
+      {name: "페페론치니", amount: 1, unit: "개"},
+      {name: "소금 (면 삶는 용)", amount: 1, unit: "큰술"},
+      {name: "소금 (간 맞추기)", amount: 1, unit: "약간"},
+      {name: "면수", amount: 1, unit: "국자"},
     ],
     steps: [
       {
@@ -904,7 +904,7 @@ const foodList = {
           afterStep: 2,
           text: "💡 새우를 마늘과 함께 볶아주세요. 새우가 분홍빛이 되면 완성이에요.",
         },
-        양파: { afterStep: 0, text: "💡 양파를 얇게 채 썰어 준비해주세요." },
+        양파: {afterStep: 0, text: "💡 양파를 얇게 채 썰어 준비해주세요."},
         양송이버섯: {
           afterStep: 2,
           text: "💡 양송이버섯을 마늘과 함께 볶아주세요.",
