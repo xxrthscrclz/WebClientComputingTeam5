@@ -1,132 +1,144 @@
 :root {
-    --main-color: #F76E11;
-    --sub-color-1: #FF9F45;
-    --sub-color-2: #FFBC80;
-    --point-color-1: #FC4F4F;
-    --point-color-2: #80D6FF;
-    --point-color-3: #5BE7A9;
+  --main-color: #f76e11;
+  --sub-color-1: #ff9f45;
+  --sub-color-2: #ffbc80;
+  --point-color-1: #fc4f4f;
+  --point-color-2: #80d6ff;
+  --point-color-3: #5be7a9;
 
-    --black-text-color: #000000;
-    --white-text-color: #FFFFFF;
-
+  --black-text-color: #000000;
+  --white-text-color: #ffffff;
 }
 
 /*-------------------------------------*/
 /* 게임 페이지 전용 (헤더·본문 레이아웃은 style.css) */
 .game-panel {
-    display: none;
+  display: none;
 }
 
 .game-panel.is-active {
-    display: block;
+  display: block;
 }
 
 .game-content {
-    width: 100%;
-    padding: 2vw 0;
+  width: 100%;
+  padding: 2vw 0;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
 
-    text-align: center;
+  text-align: center;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .game-title {
-    color: var(--black-text-color);
-    font-weight: 700;
-    font-size: 32px;
+  color: var(--black-text-color);
+  font-weight: 700;
+  font-size: 32px;
 }
-
 
 /*-------------------------------------*/
 /* 맞추기 게임용 */
 .game-select {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    justify-content: space-evenly;
-    gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-evenly;
+  gap: 12px;
 }
 
 .game-select-opt {
-    width: 40%;
-    padding: 22px;
-    font-weight: 700;
+  width: 40%;
+  padding: 22px;
+  font-weight: 700;
 
-    color: var(--color-text);
-    font-size: 20px;
-    cursor: pointer;
+  color: var(--color-text);
+  font-size: 20px;
+  cursor: pointer;
 
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-primary);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
 
-    transition:
-        background-color var(--transition-base),
-        transform var(--transition-base),
-        box-shadow var(--transition-base),
-        border-color var(--transition-base);
+  transition:
+    background-color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .game-select-opt:hover {
-    background-color: var(--color-primary-dark);
-    border-color: var(--color-primary-dark);
-    color: var(--color-text-on-primary);
-    transform: translateY(-0.21vw);
-    box-shadow: var(--shadow-card-hover);
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: var(--color-text-on-primary);
+  transform: translateY(-0.21vw);
+  box-shadow: var(--shadow-card-hover);
 }
 
 @media (max-width: 520px) {
-    /*  .game-food-image {aspect-ratio: 4 / 3;} */
-    .game-select-opt { width: 100%; }
+  /*  .game-food-image {aspect-ratio: 4 / 3;} */
+  .game-select-opt {
+    width: 100%;
+  }
 }
 
 .game-grid-container {
-    aspect-ratio: 16 / 9;
-    width: 80%;
-    min-width: 300px;
-    max-width: 800px;
-    display: grid;
+  aspect-ratio: 16 / 9;
+  width: 80%;
+  min-width: 300px;
+  max-width: 800px;
+  display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .game-grid-element {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
 }
 
 .effect-blur {
-    animation: blur var(--random-duration) ease-in-out reverse;
-    animation-iteration-count: infinite;
+  animation: blur var(--random-duration) ease-in-out reverse;
+  animation-iteration-count: infinite;
 }
 
-@keyframes blur{
-    0% {filter: blur(15px);  }
-    50% {filter: blur(5px);}
-    100% {filter: blur(15px);}
+@keyframes blur {
+  0% {
+    filter: blur(15px);
+  }
+  50% {
+    filter: blur(5px);
+  }
+  100% {
+    filter: blur(15px);
+  }
 }
 
 .effect-blank {
-    animation: blur var(--random-duration) ease-out forwards;
-    animation-iteration-count: infinite;
+  animation: blur var(--random-duration) ease-out forwards;
+  animation-iteration-count: infinite;
 }
 
-@keyframes rot{
-    0% {transform: rotateX(0);}
-    50% {transform: rotateX(180);}
-    100% {transform: rotateX(360);}
+@keyframes rot {
+  0% {
+    transform: rotateX(0);
+  }
+  50% {
+    transform: rotateX(180);
+  }
+  100% {
+    transform: rotateX(360);
+  }
 }
-
 
 /*-------------------------------------*/
 /* 게임 결과 모달 공통 */
@@ -219,7 +231,9 @@ body.game-modal-open .game-panel.is-active .game-content {
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .shortcut-btn:hover {
@@ -275,17 +289,17 @@ body.game-modal-open .game-panel.is-active .game-content {
 /*-------------------------------------*/
 /* 맞추기 게임 결과 (모달) */
 #game-end .game-food-image {
-    width: 100%;
-    max-width: 280px;
+  width: 100%;
+  max-width: 280px;
 }
 
 .game-result {
-    font-weight: 900;
-    font-size: 20px;
+  font-weight: 900;
+  font-size: 20px;
 }
 
 .game-result-menu {
-    color: var(--black-text-color);
+  color: var(--black-text-color);
 }
 
 .recipe-redirect-btn {
@@ -297,25 +311,25 @@ body.game-modal-open .game-panel.is-active .game-content {
 }
 
 .game-food-image {
-    aspect-ratio: 16 / 9;
-    width: 80%;
-    min-width: 300px;
-    max-width: 800px;
-    border-radius: var(--radius-lg);
-    border: solid var(--color-primary);
-    transition:
-        color var(--transition-base),
-        transform var(--transition-base),
-        box-shadow var(--transition-base);
+  aspect-ratio: 16 / 9;
+  width: 80%;
+  min-width: 300px;
+  max-width: 800px;
+  border-radius: var(--radius-lg);
+  border: solid var(--color-primary);
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
 
-    object-fit: cover;
+  object-fit: cover;
 }
 
 .win {
-    color: #80D6FF;
+  color: #80d6ff;
 }
 .lose {
-    color: #FC4F4F;
+  color: #fc4f4f;
 }
 
 /*-------------------------------------*/
@@ -724,4 +738,172 @@ body.game-modal-open .game-panel.is-active .game-content {
     padding-top: 8px;
     text-align: left;
   }
+}
+
+/* =========================================================
+   다크 모드 - 게임 페이지
+   ========================================================= */
+body.dark-mode .game-title {
+  color: #ffffff;
+}
+
+body.dark-mode .modal-content .game-title {
+  color: #ffffff;
+}
+
+body.dark-mode .game-select-opt {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+body.dark-mode .game-select-opt:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+}
+
+body.dark-mode .game-grid-element {
+  background-color: transparent;
+}
+
+body.dark-mode .modal-content {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+body.dark-mode .modal-title {
+  color: #ffffff;
+}
+
+body.dark-mode #winner-modal .food-name,
+body.dark-mode #winner-modal .modal-sub {
+  color: #ffffff;
+}
+
+body.dark-mode #game-end .game-result-menu {
+  color: #ffffff;
+}
+
+body.dark-mode .modal-sub {
+  color: var(--color-text-muted);
+}
+
+body.dark-mode .food-card {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+body.dark-mode .food-name {
+  color: #ffffff;
+}
+
+body.dark-mode .vs-text {
+  color: #ffffff;
+}
+
+body.dark-mode .round-name {
+  color: #ffffff;
+}
+
+body.dark-mode .round-match-label {
+  color: var(--color-text-muted);
+}
+
+body.dark-mode .image-placeholder {
+  background-color: #3d3d3d;
+}
+
+body.dark-mode .retry-btn {
+  background-color: var(--color-surface);
+  border-color: var(--color-primary-muted);
+  color: var(--color-primary);
+}
+
+body.dark-mode .retry-btn:hover {
+  background-color: var(--color-primary-soft);
+  border-color: var(--color-primary);
+}
+
+/* 룰렛 다크 모드 */
+body.dark-mode .roulette-heading,
+body.dark-mode .roulette-desc,
+body.dark-mode .roulette-result {
+  color: #ffffff;
+}
+
+/* 토너먼트 타이틀 다크 모드 */
+body.dark-mode .title,
+body.dark-mode #tournament-title {
+  color: #ffffff;
+}
+
+/* 팀 페이지 다크 모드 */
+body.dark-mode .team-hero {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(92, 61, 42, 0.3) 0%,
+      transparent 58%
+    ),
+    linear-gradient(180deg, #2d2d2d 0%, rgba(45, 45, 45, 0) 100%);
+}
+
+body.dark-mode .team-hero-label {
+  background: rgba(45, 45, 45, 0.92);
+  border-color: rgba(92, 61, 42, 0.8);
+}
+
+body.dark-mode .team-content {
+  background: rgba(45, 45, 45, 0.96);
+  border-color: rgba(92, 61, 42, 0.65);
+}
+
+body.dark-mode .team-content-title {
+  color: #ffffff;
+}
+
+body.dark-mode .team-introduce {
+  background: #2d2d2d;
+  border-color: rgba(92, 61, 42, 0.75);
+  color: var(--color-text);
+}
+
+body.dark-mode .team-introduce:not(.team-introduce-goal) {
+  background: linear-gradient(90deg, #3d3d3d 0%, #2d2d2d 18%, #2d2d2d 100%);
+}
+
+body.dark-mode .team-introduce-goal {
+  background: linear-gradient(135deg, #3d2a1a 0%, #2d2d2d 100%);
+  color: var(--color-primary);
+}
+
+body.dark-mode .team-worker-card {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+body.dark-mode .team-worker-card:hover {
+  background-color: var(--color-primary-soft);
+  border-color: var(--color-primary-muted);
+}
+
+body.dark-mode .team-worker-name {
+  color: #ffffff;
+}
+
+body.dark-mode .team-worker-meta {
+  color: var(--color-text-muted);
+}
+
+body.dark-mode .team-worker-bio {
+  color: var(--color-text-muted);
+}
+
+body.dark-mode .team-worker-photo {
+  background-color: var(--color-bg);
+}
+
+body.dark-mode .team-members-desc {
+  color: var(--color-text-muted);
 }

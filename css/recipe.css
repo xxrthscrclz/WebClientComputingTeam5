@@ -599,3 +599,176 @@
     font-size: 1.5rem;
   }
 }
+
+/* =========================================================
+   다크 모드 - 레시피 페이지
+   ========================================================= */
+body.dark-mode #recipePage {
+  --cream: #2d2d2d;
+  --text: #e8e8e8;
+  --text-muted: #a0a0a0;
+  --border: #5c3d2a;
+  --white: #2d2d2d;
+  --brown: #e8e8e8;
+  --orange-light: #3d2a1a;
+  --green-light: #1a3d2a;
+}
+
+body.dark-mode .recipe-hero {
+  background: var(--white);
+  border-color: var(--border);
+}
+
+body.dark-mode .hero-image-placeholder {
+  background: linear-gradient(135deg, #3d2a1a 0%, #5c3d2a 50%, #e8590c 100%);
+}
+
+body.dark-mode .hero-info {
+  background: var(--white);
+}
+
+body.dark-mode .recipe-category {
+  background: var(--orange-light);
+}
+
+body.dark-mode .recipe-title {
+  color: var(--brown);
+}
+
+body.dark-mode .recipe-desc {
+  color: var(--text-muted);
+}
+
+body.dark-mode .meta-chip {
+  background: #3d3d3d;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+body.dark-mode .diff-label {
+  color: var(--text-muted);
+}
+
+body.dark-mode .section-card {
+  background: var(--white);
+  border-color: var(--border);
+}
+
+body.dark-mode .section-title {
+  color: var(--brown);
+  border-bottom-color: var(--orange-light);
+}
+
+body.dark-mode .section-title .s-icon {
+  background: var(--orange-light);
+}
+
+body.dark-mode .ingredient-item {
+  border-bottom-color: #3d3d3d;
+}
+
+body.dark-mode .ing-name {
+  color: var(--text);
+}
+
+body.dark-mode .measure-table th {
+  background: var(--orange-light);
+}
+
+body.dark-mode .measure-table td {
+  border-bottom-color: #3d3d3d;
+  color: var(--text);
+}
+
+body.dark-mode .measure-table tr:nth-child(even) td {
+  background: #3d3d3d;
+}
+
+body.dark-mode .step-text {
+  color: var(--text);
+}
+
+body.dark-mode .step-time-badge {
+  background: var(--orange-light);
+  color: var(--sub1);
+}
+
+body.dark-mode .tip-box {
+  background: var(--green-light);
+  border-color: #2a5c3d;
+}
+
+body.dark-mode .tip-content {
+  color: #a0e0c0;
+}
+
+body.dark-mode .tip-content strong {
+  color: #5be7a9;
+}
+
+body.dark-mode .summary-card {
+  background: var(--main);
+  color: #ffffff;
+}
+
+body.dark-mode .summary-card-title {
+  color: #ffffff;
+}
+
+body.dark-mode .stat-val,
+body.dark-mode .stat-lbl {
+  color: #ffffff;
+}
+
+body.dark-mode .related-card {
+  background: var(--white);
+  border-color: var(--border);
+}
+
+body.dark-mode .related-title {
+  color: var(--brown);
+}
+
+body.dark-mode .related-item {
+  color: var(--text);
+  border-bottom-color: #3d3d3d;
+}
+
+body.dark-mode .related-meta {
+  color: var(--text-muted);
+}
+
+body.dark-mode .btn-back {
+  background: #3d3d3d;
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+body.dark-mode .btn-back:hover {
+  background: var(--border);
+  color: var(--text);
+}
+
+body.dark-mode .btn-action {
+  background: var(--white);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+body.dark-mode .btn-action:hover {
+  border-color: var(--main);
+  color: var(--main);
+}
+
+body.dark-mode .breadcrumb {
+  color: var(--text-muted);
+}
+
+body.dark-mode .breadcrumb span {
+  color: var(--text-muted);
+}
+
+body.dark-mode .recipe-footer {
+  background: #121212;
+  color: #666;
+}

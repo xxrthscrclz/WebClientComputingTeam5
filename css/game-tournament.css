@@ -92,6 +92,10 @@
 
 .winner-display {
   margin: 20px 0;
+  padding: 16px;
+  border: 2px solid var(--sub-color-1);
+  border-radius: 12px;
+  width: 100%;
 }
 
 .winner-display .image-placeholder {
@@ -100,11 +104,43 @@
 }
 
 @media (max-width: 768px) {
-    .match-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .vs-text {
-        margin: 10px 0;
-    }
+  .match-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .vs-text {
+    margin: 10px 0;
+  }
+}
+
+/* =========================================================
+   다크 모드 - 토너먼트 게임
+   ========================================================= */
+body.dark-mode #winner-modal .modal-title {
+  color: #ffffff;
+}
+
+body.dark-mode #winner-modal .modal-sub {
+  color: #ffffff;
+}
+
+body.dark-mode #winner-modal .food-name {
+  color: #ffffff;
+}
+
+body.dark-mode .food-card {
+  background-color: var(--color-surface);
+  border-color: var(--color-primary-muted);
+}
+
+body.dark-mode .food-name {
+  color: #ffffff;
+}
+
+body.dark-mode #tournament-game .title {
+  color: #ffffff;
+}
+
+body.dark-mode .round-match-label {
+  color: #a0a0a0;
 }

@@ -6,7 +6,7 @@ function updateHeaderOnScroll() {
   header.classList.toggle("is-scrolled", window.scrollY > SCROLL_THRESHOLD);
 }
 
-window.addEventListener("scroll", updateHeaderOnScroll, { passive: true });
+window.addEventListener("scroll", updateHeaderOnScroll, {passive: true});
 updateHeaderOnScroll();
 
 const INDEX_PAGE = "index.html";
@@ -88,4 +88,29 @@ if (fortuneCookieBanner) {
   fortuneCookieBanner.addEventListener("click", () => {
     window.location.href = FORTUNE_COOKIE_PAGE;
   });
+}
+
+/* =========================================================
+   다크/라이트 모드 토글
+   ========================================================= */
+const THEME_KEY = "theme";
+const DARK_MODE_CLASS = "dark-mode";
+
+function initTheme() {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  if (savedTheme === "dark") {
+    document.body.classList.add(DARK_MODE_CLASS);
+  }
+}
+
+function toggleTheme() {
+  const isDark = document.body.classList.toggle(DARK_MODE_CLASS);
+  localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
+}
+
+initTheme();
+
+const themeToggle = document.getElementById("themeToggle");
+if (themeToggle) {
+  themeToggle.addEventListener("click", toggleTheme);
 }

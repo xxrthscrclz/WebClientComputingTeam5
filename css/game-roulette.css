@@ -179,3 +179,24 @@
   opacity: 0.65;
   cursor: not-allowed;
 }
+
+/* =========================================================
+   다크 모드 - 룰렛 게임
+   ========================================================= */
+body.dark-mode #roulette-game .roulette-heading {
+  color: #ffffff;
+}
+
+body.dark-mode #roulette-game .roulette-desc {
+  color: #ffffff;
+}
+
+body.dark-mode .roulette-result {
+  color: #ffffff;
+}
+
+body.dark-mode #roulette-modal .modal-title,
+body.dark-mode #roulette-modal .modal-sub,
+body.dark-mode #roulette-modal .food-name {
+  color: #ffffff;
+}
