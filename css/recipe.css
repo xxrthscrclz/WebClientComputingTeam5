@@ -465,7 +465,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: var(--space-main-gap);
+  gap: 1.5rem;
 }
 
 /* summary card */
