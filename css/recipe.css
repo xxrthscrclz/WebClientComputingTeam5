@@ -387,6 +387,42 @@
   font-weight: 600;
 }
 
+.selected-options {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--cream);
+}
+
+.options-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.option-tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--orange-light);
+  color: var(--main);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.option-tag-topping {
+  background: var(--green-light);
+  color: #0f9960;
+}
+
+.step-item-extra .step-text {
+  color: var(--main);
+}
+
+.step-num-extra {
+  background: var(--sub1);
+}
+
 /* ── TIP BOX ── */
 .tip-box {
   background: var(--green-light);
