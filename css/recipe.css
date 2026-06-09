@@ -25,16 +25,18 @@
   --green-light: #eafff6;
   --yellow: #ff9f45;
   --yellow-light: #fff3e8;
+
+  gap: var(--space-main-gap);
 }
 
 #recipePage .breadcrumb {
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.5rem;
   font-size: 0.8rem;
   color: var(--text-muted);
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 24px;
+  gap: 8px;
 }
 
 #recipePage .breadcrumb a {
@@ -46,7 +48,6 @@
 }
 
 #recipePage .recipe-layout {
-  margin-top: -80px;
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 2.5rem;
@@ -464,7 +465,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-main-gap);
 }
 
 /* summary card */
@@ -627,9 +628,13 @@
 @media (max-width: 768px) {
   #recipePage .recipe-layout {
     grid-template-columns: 1fr;
+    gap: var(--space-main-gap);
   }
   #recipePage .sidebar {
-    order: -1;
+    order: 1;
+  }
+  #recipePage .recipe-body {
+    order: 0;
   }
   .recipe-title {
     font-size: 1.5rem;
