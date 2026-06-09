@@ -6,9 +6,9 @@ const customFieldset = document.querySelector("#customFieldset");
 const customFields = document.querySelector("#customFields");
 const selectedMenuName = document.querySelector("#selectedMenuName");
 const gameSource = document.querySelector("#gameSource");
-const spicyGuide = document.querySelector('.spicy-guide');
+const spicyGuide = document.querySelector(".spicy-guide");
 
-if (spicyGuide) spicyGuide.classList.remove('visible');
+if (spicyGuide) spicyGuide.classList.remove("visible");
 
 const menuForms = {
   tteokbokki: {
@@ -28,7 +28,16 @@ const menuForms = {
       {
         id: "topping",
         label: "토핑",
-        options: ["햄", "양배추", "치즈", "소시지", "차돌박이", "김말이", "만두", "오뎅"],
+        options: [
+          "햄",
+          "양배추",
+          "치즈",
+          "소시지",
+          "차돌박이",
+          "김말이",
+          "만두",
+          "오뎅",
+        ],
       },
     ],
   },
@@ -44,7 +53,17 @@ const menuForms = {
       {
         id: "topping",
         label: "토핑",
-        options: ["햄", "참치", "소시지", "돼지고기", "치즈", "양파", "당근", "김가루", "계란"],
+        options: [
+          "햄",
+          "참치",
+          "소시지",
+          "돼지고기",
+          "치즈",
+          "양파",
+          "당근",
+          "김가루",
+          "계란",
+        ],
       },
     ],
   },
@@ -65,7 +84,16 @@ const menuForms = {
       {
         id: "topping",
         label: "토핑",
-        options: ["감자", "고구마", "떡", "라면사리", "당면", "파", "당근", "무"],
+        options: [
+          "감자",
+          "고구마",
+          "떡",
+          "라면사리",
+          "당면",
+          "파",
+          "당근",
+          "무",
+        ],
       },
       {
         id: "endMeal",
@@ -112,7 +140,16 @@ const menuForms = {
       {
         id: "topping",
         label: "토핑",
-        options: ["두부", "돼지고기", "차돌박이", "양파", "호박", "감자", "버섯", "바지락"],
+        options: [
+          "두부",
+          "돼지고기",
+          "차돌박이",
+          "양파",
+          "호박",
+          "감자",
+          "버섯",
+          "바지락",
+        ],
       },
     ],
   },
@@ -133,7 +170,16 @@ const menuForms = {
       {
         id: "topping",
         label: "토핑",
-        options: ["두부", "햄", "돼지고기", "차돌박이", "양파", "라면사리", "만두", "떡"],
+        options: [
+          "두부",
+          "햄",
+          "돼지고기",
+          "차돌박이",
+          "양파",
+          "라면사리",
+          "만두",
+          "떡",
+        ],
       },
     ],
   },
@@ -154,7 +200,16 @@ const menuForms = {
       {
         id: "topping",
         label: "토핑",
-        options: ["조개", "소고기", "굴", "들깨", "옹심이", "황태", "표고버섯", "두부"],
+        options: [
+          "조개",
+          "소고기",
+          "굴",
+          "들깨",
+          "옹심이",
+          "황태",
+          "표고버섯",
+          "두부",
+        ],
       },
     ],
   },
@@ -180,7 +235,16 @@ const menuForms = {
       {
         id: "topping",
         label: "토핑",
-        options: ["베이컨", "새우", "양파", "양송이버섯", "바지락", "방울토마토", "브로콜리", "치즈"],
+        options: [
+          "베이컨",
+          "새우",
+          "양파",
+          "양송이버섯",
+          "바지락",
+          "방울토마토",
+          "브로콜리",
+          "치즈",
+        ],
       },
     ],
   },
@@ -194,9 +258,7 @@ const sourceLabels = {
   recommend: "메뉴 추천",
 };
 
-if (!form) {
-  // form.html 이 아닌 페이지에서는 실행하지 않음
-} else {
+if (form) {
   const params = new URLSearchParams(window.location.search);
   const initialMenu = params.get("menu");
   const source = params.get("source");
@@ -212,7 +274,7 @@ if (!form) {
     }
 
     selectedMenuName.textContent = menu.label;
-    const multiCheckboxFields = ['topping', 'spicyTopping', 'herb', 'sauce'];
+    const multiCheckboxFields = ["topping", "spicyTopping", "herb", "sauce"];
 
     customFieldset.hidden = false;
     customFields.innerHTML = menu.fields
@@ -266,17 +328,19 @@ if (!form) {
     }
 
     if (spicyGuide) {
-      spicyGuide.classList.remove('visible');
-      const spicyFieldDef = menu.fields.find((f) => f.id === 'spicyLevel');
+      spicyGuide.classList.remove("visible");
+      const spicyFieldDef = menu.fields.find((f) => f.id === "spicyLevel");
       if (spicyFieldDef) {
-        const spicySelect = document.getElementById('spicyLevel');
+        const spicySelect = document.getElementById("spicyLevel");
         if (spicySelect && !spicySelect.dataset.guideAttached) {
-          const showGuide = () => spicyGuide.classList.add('visible');
-          const hideGuide = () => spicyGuide.classList.remove('visible');
-          spicySelect.addEventListener('focus', showGuide);
-          spicySelect.addEventListener('click', showGuide);
-          spicySelect.addEventListener('blur', () => setTimeout(hideGuide, 140));
-          spicySelect.dataset.guideAttached = 'true';
+          const showGuide = () => spicyGuide.classList.add("visible");
+          const hideGuide = () => spicyGuide.classList.remove("visible");
+          spicySelect.addEventListener("focus", showGuide);
+          spicySelect.addEventListener("click", showGuide);
+          spicySelect.addEventListener("blur", () =>
+            setTimeout(hideGuide, 140),
+          );
+          spicySelect.dataset.guideAttached = "true";
         }
       }
     }
@@ -326,13 +390,13 @@ if (!form) {
         : data.get(field.id),
     }));
 
-  if (menuKey === "kimchiFriedRice") {
-    options.push({
-      id: "eggStyle",
-      label: "계란",
-      value: isEggToppingSelected() ? data.get("eggStyle") : "없음",
-    });
-  }
+    if (menuKey === "kimchiFriedRice") {
+      options.push({
+        id: "eggStyle",
+        label: "계란",
+        value: isEggToppingSelected() ? data.get("eggStyle") : "없음",
+      });
+    }
 
     return options;
   }
@@ -351,7 +415,7 @@ if (!form) {
 
     const hasEmptyOption = getSelectedOptions(menuKey).some((option) => {
       if (Array.isArray(option.value)) {
-        return option.value.length === 0;
+        return false;
       }
       return !option.value;
     });

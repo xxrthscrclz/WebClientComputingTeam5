@@ -1,12 +1,12 @@
 const tournamentFoods = [
-  { name: "김치볶음밥", key: "kimchiFriedRice" },
-  { name: "김치찌개", key: "kimchiStew" },
-  { name: "닭볶음탕", key: "dakbokkeumtang" },
-  { name: "된장찌개", key: "doenjangStew" },
-  { name: "떡볶이", key: "tteokbokki" },
-  { name: "미역국", key: "seaweedSoup" },
-  { name: "샤브샤브", key: "shabuShabu" },
-  { name: "알리오올리오", key: "aglioOlio" },
+  {name: "김치볶음밥", key: "kimchiFriedRice"},
+  {name: "김치찌개", key: "kimchiStew"},
+  {name: "닭볶음탕", key: "dakbokkeumtang"},
+  {name: "된장찌개", key: "doenjangStew"},
+  {name: "떡볶이", key: "tteokbokki"},
+  {name: "미역국", key: "seaweedSoup"},
+  {name: "샤브샤브", key: "shabuShabu"},
+  {name: "알리오올리오", key: "aglioOlio"},
 ];
 
 const leftCard = document.getElementById("left-card");
@@ -101,9 +101,10 @@ function pickWinner(side, event) {
     event.stopPropagation();
   }
 
-  const winner = side === "left"
-    ? currentRound[matchIndex * 2]
-    : currentRound[matchIndex * 2 + 1];
+  const winner =
+    side === "left"
+      ? currentRound[matchIndex * 2]
+      : currentRound[matchIndex * 2 + 1];
 
   nextRound.push(winner);
   matchIndex += 1;
@@ -122,7 +123,6 @@ function pickWinner(side, event) {
   startRound(nextRound);
 }
 
-//  초기화  (새로고침,헤더 클릭 시)
 function initTournament() {
   if (!leftCard || !rightCard) return;
   closeWinnerModal();
