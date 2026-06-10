@@ -142,7 +142,9 @@ if (form) {
   function getSelectedOptions(menuKey) {
     const menu = menuForms[menuKey];
     const data = new FormData(form);
-    const multiCheckboxFields = ["topping", "spicyTopping", "herb", "sauce"];
+    const multiCheckboxFields = menu.fields
+      .filter((field) => field.type === "multi")
+      .map((field) => field.id);
 
     const options = menu.fields.map((field) => ({
       id: field.id,
