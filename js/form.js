@@ -86,9 +86,7 @@ if (form) {
       .join("");
 
     if (menuKey === "kimchiFriedRice") {
-      if (menuKey === "kimchiFriedRice") {
-        attachEggStyleToggle();
-      }
+      attachEggStyleToggle();
     }
 
     if (spicyGuide) {
@@ -114,8 +112,8 @@ if (form) {
     const eggCheckbox = customFields.querySelector(
       'input[name="topping"][value="계란"]',
     );
-    const eggLabel = document.getElementById("eggStyleLabel");
     const eggSelect = document.getElementById("eggStyle");
+    const eggLabel = eggSelect ? eggSelect.previousElementSibling : null;
 
     if (!eggCheckbox || !eggLabel || !eggSelect) return;
 
@@ -144,7 +142,9 @@ if (form) {
   function getSelectedOptions(menuKey) {
     const menu = menuForms[menuKey];
     const data = new FormData(form);
-    const multiCheckboxFields = ["topping", "spicyTopping", "herb", "sauce"];
+    const multiCheckboxFields = menu.fields
+      .filter((field) => field.type === "multi")
+      .map((field) => field.id);
 
     const options = menu.fields.map((field) => ({
       id: field.id,
