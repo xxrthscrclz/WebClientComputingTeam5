@@ -1,7 +1,7 @@
 var params = new URLSearchParams(window.location.search);
 var foodKey = params.get("food");
 var menuKey = params.get("menu");
-var serving = parseInt(params.get("serving")) || 1;
+var serving = 1;
 
 if (!foodKey && menuKey && menuKeyToFoodKey[menuKey]) {
   foodKey = menuKeyToFoodKey[menuKey];
@@ -90,7 +90,6 @@ if (menuKey) {
       key !== "food" &&
       key !== "menu" &&
       key !== "source" &&
-      key !== "serving" &&
       key !== "topping" &&
       key !== "sauce"
     ) {
@@ -170,7 +169,7 @@ function buildIngredients() {
     .map(function (ing) {
       return {
         name: ing.name,
-        amount: parseFloat((ing.amount * serving).toFixed(1)),
+        amount: ing.amount,
         unit: ing.unit,
         base: ing.amount,
       };
@@ -180,7 +179,7 @@ function buildIngredients() {
 
   if (spicy && spicy.ingredientMod) {
     Object.keys(spicy.ingredientMod).forEach(function (ingName) {
-      var delta = spicy.ingredientMod[ingName] * serving;
+      var delta = spicy.ingredientMod[ingName];
       var found = list.find(function (i) {
         return i.name.indexOf(ingName) !== -1;
       });
@@ -202,7 +201,7 @@ function buildIngredients() {
         ) {
           list.push({
             name: ei.name,
-            amount: parseFloat((ei.amount * serving).toFixed(1)),
+            amount: parseFloat(ei.amount.toFixed(1)),
             unit: ei.unit,
           });
         }
@@ -221,7 +220,7 @@ function buildIngredients() {
       ) {
         list.push({
           name: ei.name,
-          amount: parseFloat((ei.amount * serving).toFixed(1)),
+          amount: parseFloat(ei.amount.toFixed(1)),
           unit: ei.unit,
         });
       }
@@ -240,7 +239,7 @@ function buildIngredients() {
       ) {
         list.push({
           name: info.name,
-          amount: parseFloat((info.amount * serving).toFixed(1)),
+          amount: parseFloat(info.amount.toFixed(1)),
           unit: info.unit,
         });
       }
@@ -454,8 +453,8 @@ function renderPage() {
     "난이도: " + food.diffLabel;
   document.getElementById("sum-time").textContent = food.time;
   document.getElementById("sum-diff").textContent = food.difficulty;
-  document.getElementById("serving-display").textContent = serving;
-  document.getElementById("serving-badge").textContent = serving + "인분 기준";
+  document.getElementById("serving-display").textContent = 1;
+  document.getElementById("serving-badge").textContent = "1인분 기준";
 
   var img = document.getElementById("hero-img");
   var placeholder = document.getElementById("hero-placeholder");

@@ -10,245 +10,16 @@ const spicyGuide = document.querySelector(".spicy-guide");
 
 if (spicyGuide) spicyGuide.classList.remove("visible");
 
-const menuForms = {
-  tteokbokki: {
-    label: "떡볶이",
-    recipeUrl: "recipe.html",
-    fields: [
-      {
-        id: "spicyLevel",
-        label: "맵기 단계",
-        options: ["순한맛", "초보맛", "덜매운맛", "매운맛"],
-      },
-      {
-        id: "saltyLevel",
-        label: "염도",
-        options: ["싱겁게", "보통", "짭짤하게"],
-      },
-      {
-        id: "topping",
-        label: "토핑",
-        options: [
-          "햄",
-          "양배추",
-          "치즈",
-          "소시지",
-          "차돌박이",
-          "김말이",
-          "만두",
-          "오뎅",
-        ],
-      },
-    ],
-  },
-  kimchiFriedRice: {
-    label: "김치볶음밥",
-    recipeUrl: "recipe.html",
-    fields: [
-      {
-        id: "spicyLevel",
-        label: "맵기 단계",
-        options: ["순한맛", "초보맛", "덜매운맛", "매운맛"],
-      },
-      {
-        id: "topping",
-        label: "토핑",
-        options: [
-          "햄",
-          "참치",
-          "소시지",
-          "돼지고기",
-          "치즈",
-          "양파",
-          "당근",
-          "김가루",
-          "계란",
-        ],
-      },
-    ],
-  },
-  dakbokkeumtang: {
-    label: "닭볶음탕",
-    recipeUrl: "recipe.html",
-    fields: [
-      {
-        id: "spicyLevel",
-        label: "맵기 단계",
-        options: ["순한맛", "초보맛", "덜매운맛", "매운맛"],
-      },
-      {
-        id: "saltyLevel",
-        label: "염도",
-        options: ["싱겁게", "보통", "짭짤하게"],
-      },
-      {
-        id: "topping",
-        label: "토핑",
-        options: [
-          "감자",
-          "고구마",
-          "떡",
-          "라면사리",
-          "당면",
-          "파",
-          "당근",
-          "무",
-        ],
-      },
-      {
-        id: "endMeal",
-        label: "볶음밥",
-        options: ["없음", "볶음밥 추가"],
-      },
-    ],
-  },
-  shabuShabu: {
-    label: "샤브샤브",
-    recipeUrl: "recipe.html",
-    fields: [
-      {
-        id: "brothType",
-        label: "육수 종류",
-        options: ["맑은 육수", "얼큰한 육수", "스키야키 육수", "마라 육수"],
-      },
-      {
-        id: "sauce",
-        label: "소스",
-        options: ["폰즈 소스", "스위트 칠리 소스", "탕콩 소스", "참소스"],
-      },
-      {
-        id: "endMeal",
-        label: "마무리 식사",
-        options: ["볶음밥", "칼국수", "죽"],
-      },
-    ],
-  },
-  doenjangStew: {
-    label: "된장찌개",
-    recipeUrl: "recipe.html",
-    fields: [
-      {
-        id: "spicyLevel",
-        label: "맵기 단계",
-        options: ["순한맛", "초보맛", "덜매운맛", "매운맛"],
-      },
-      {
-        id: "saltyLevel",
-        label: "염도",
-        options: ["싱겁게", "보통", "짭짤하게"],
-      },
-      {
-        id: "topping",
-        label: "토핑",
-        options: [
-          "두부",
-          "돼지고기",
-          "차돌박이",
-          "양파",
-          "호박",
-          "감자",
-          "버섯",
-          "바지락",
-        ],
-      },
-    ],
-  },
-  kimchiStew: {
-    label: "김치찌개",
-    recipeUrl: "recipe.html",
-    fields: [
-      {
-        id: "spicyLevel",
-        label: "맵기 단계",
-        options: ["순한맛", "초보맛", "덜매운맛", "매운맛"],
-      },
-      {
-        id: "saltyLevel",
-        label: "염도",
-        options: ["싱겁게", "보통", "짭짤하게"],
-      },
-      {
-        id: "topping",
-        label: "토핑",
-        options: [
-          "두부",
-          "햄",
-          "돼지고기",
-          "차돌박이",
-          "양파",
-          "라면사리",
-          "만두",
-          "떡",
-        ],
-      },
-    ],
-  },
-  seaweedSoup: {
-    label: "미역국",
-    recipeUrl: "recipe.html",
-    fields: [
-      {
-        id: "soupAmount",
-        label: "국물 양",
-        options: ["자작하게", "보통", "넉넉하게"],
-      },
-      {
-        id: "saltyLevel",
-        label: "염도",
-        options: ["싱겁게", "보통", "짭짤하게"],
-      },
-      {
-        id: "topping",
-        label: "토핑",
-        options: [
-          "조개",
-          "소고기",
-          "굴",
-          "들깨",
-          "옹심이",
-          "황태",
-          "표고버섯",
-          "두부",
-        ],
-      },
-    ],
-  },
-  aglioOlio: {
-    label: "알리오올리오 파스타",
-    recipeUrl: "recipe.html",
-    fields: [
-      {
-        id: "spicyTopping",
-        label: "매운 재료",
-        options: ["없음", "페페론치노", "고춧가루", "둘 다"],
-      },
-      {
-        id: "herb",
-        label: "향 재료",
-        options: ["없음", "파슬리", "대파", "둘 다"],
-      },
-      {
-        id: "saltyLevel",
-        label: "염도",
-        options: ["싱겁게", "보통", "짭짤하게"],
-      },
-      {
-        id: "topping",
-        label: "토핑",
-        options: [
-          "베이컨",
-          "새우",
-          "양파",
-          "양송이버섯",
-          "바지락",
-          "방울토마토",
-          "브로콜리",
-          "치즈",
-        ],
-      },
-    ],
-  },
-};
+const menuForms = Object.fromEntries(
+  Object.entries(menuOptions).map(([menuKey, menu]) => [
+    menuKey,
+    {
+      label: menu.label,
+      recipeUrl: "recipe.html",
+      fields: menu.fields,
+    },
+  ]),
+);
 
 const sourceLabels = {
   roulette: "룰렛 돌리기",
@@ -274,7 +45,9 @@ if (form) {
     }
 
     selectedMenuName.textContent = menu.label;
-    const multiCheckboxFields = ["topping", "spicyTopping", "herb", "sauce"];
+    const multiCheckboxFields = menu.fields
+      .filter((field) => field.type === "multi")
+      .map((field) => field.id);
 
     customFieldset.hidden = false;
     customFields.innerHTML = menu.fields
@@ -313,18 +86,9 @@ if (form) {
       .join("");
 
     if (menuKey === "kimchiFriedRice") {
-      customFields.insertAdjacentHTML(
-        "beforeend",
-        `
-        <label for="eggStyle" id="eggStyleLabel" class="egg-style-field">계란</label>
-        <select id="eggStyle" name="eggStyle" class="egg-style-field">
-          <option value="">선택하세요</option>
-          <option value="반숙">반숙</option>
-          <option value="완숙">완숙</option>
-        </select>
-      `,
-      );
-      attachEggStyleToggle();
+      if (menuKey === "kimchiFriedRice") {
+        attachEggStyleToggle();
+      }
     }
 
     if (spicyGuide) {
@@ -386,8 +150,8 @@ if (form) {
       id: field.id,
       label: field.label,
       value: multiCheckboxFields.includes(field.id)
-        ? data.getAll(field.id)
-        : data.get(field.id),
+        ? data.getAll(field.id) // -> ["치즈", "햄"]
+        : data.get(field.id), // -> "매운맛"
     }));
 
     if (menuKey === "kimchiFriedRice") {
